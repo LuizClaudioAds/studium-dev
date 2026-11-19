@@ -209,6 +209,11 @@ O conteúdo continua sendo Markdown puro, legível direto aqui no GitHub. O site
 O plano de evolução está em [ROADMAP.md](ROADMAP.md) — incluindo a ideia de transformar
 consulta em progresso com XP, simulados, conquistas e a fazenda evoluindo junto.
 
+## Diário de construção
+
+- [Sessão de 19/11/2026](docs/sessao-2026-11-19.md) — fundação do acervo, identidade visual,
+  primeiro lote de resumos, pipeline de conteúdo e deploy.
+
 ---
 
 <div align="center">
