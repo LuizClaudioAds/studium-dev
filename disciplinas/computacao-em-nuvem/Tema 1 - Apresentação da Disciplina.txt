@@ -1,0 +1,19 @@
+Apresentação da disciplina
+Como grandes empresas garantem eficiência e inovação sem altos custos? E qual é o papel da computação em nuvem nesse cenário? Veja o vídeo a seguir e descubra como essa tecnologia transforma o mercado e a sua carreira.
+
+
+
+O que você irá estudar nesta disciplina 
+
+
+Fundamentos de Computação em Nuvem: entender os conceitos e modelos de computação em nuvem, analisando sua aplicabilidade para otimizar custos e eficiência na gestão de recursos de TI.
+ 
+Arquitetura de Computação em Nuvem: compreender os elementos e camadas da arquitetura de nuvem para projetar e comparar soluções adequadas às demandas organizacionais.
+ 
+Segurança em Computação em Nuvem: reconhecer práticas e responsabilidades de segurança em serviços de nuvem, garantindo proteção e confiabilidade em sistemas.
+ 
+Ambientação de Computação em Nuvem - Azure: aprender os fundamentos, serviços e governança do Microsoft Azure, desenvolvendo habilidades práticas para implementar soluções híbridas e em nuvem.
+ 
+Ambientação de Computação em Nuvem - AWS: explorar as ferramentas de provisionamento e gestão de recursos na Amazon Web Services, aplicando boas práticas para atender às necessidades dinâmicas de TI.
+ 
+Ambientação de Computação em Nuvem - Google Cloud: identificar as melhores práticas de configuração e segurança no Google Cloud, aprimorando o desempenho de aplicações e infraestrutura em nuvem.

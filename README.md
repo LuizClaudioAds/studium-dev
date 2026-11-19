@@ -88,6 +88,11 @@ flowchart LR
 ```text
 studium-dev/
 ├── README.md                  ← você está aqui
+├── preview/
+│   └── index.html             ← protótipo visual (abra no navegador)
+├── materiais/                 ← caixa de entrada dos PDFs e anotações brutas
+│   ├── _entrada/
+│   └── <disciplina>/
 └── disciplinas/
     ├── _template/             ← molde usado para novas disciplinas
     ├── pensamento-computacional/
@@ -146,9 +151,26 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 
 ---
 
+## Prévia visual
+
+`preview/index.html` é um protótipo navegável, sem build e sem dependência: abra o arquivo
+no navegador.
+
+- **A fazenda** — o acervo como lugar, dividido em três áreas. Cada construção é uma
+  disciplina: a sementeira, o silo, a roda d'água, a prefeitura, o coreto, o moinho,
+  a ponte. Clique e a disciplina abre.
+- **Canteiros** — a mesma informação em forma de lista, com busca e filtro por trilha.
+- **Dia e noite** — o botão no topo troca a iluminação da cena.
+- Tudo em pixel art autoral desenhada em SVG: nada de asset de terceiros.
+
 ## Próximo passo
 
-Transformar esse esqueleto em uma experiência de verdade: um site estático que lê os Markdowns das disciplinas e monta uma interface de consulta — busca, filtros por trilha, mapa de conexões interativo e progresso de preenchimento do acervo.
+O esqueleto e a camada visual existem. Agora o acervo precisa de **substância**: os
+materiais da faculdade entram em `materiais/<disciplina>/`, são resumidos e viram
+Markdown em `disciplinas/<disciplina>/`.
+
+Quando houver conteúdo, a camada visual passa a ler os próprios Markdowns — busca,
+leitura e mapa de conexões alimentados pela fonte da verdade, sem duplicar texto.
 
 O conteúdo continua sendo Markdown puro, legível direto aqui no GitHub. O site é só uma camada por cima.
 

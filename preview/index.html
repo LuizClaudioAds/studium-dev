@@ -37,11 +37,14 @@
     --page:#f0e2c2;
     --page-2:#e8d6b2;
     --scan:rgba(255,255,255,.13);
-    --f-fund:#7d6ee0;
-    --f-infra:#3f9fd8;
-    --f-dados:#c98a3c;
-    --f-eng:#d0567f;
-    --f-soc:#4f9d7a;
+    --water:#6fb7d8;
+    --water-2:#4f9cc4;
+    --stone:#dfe4de;
+    --f-fund:#6656cf;
+    --f-infra:#2b7fb3;
+    --f-dados:#a86b22;
+    --f-eng:#b8406a;
+    --f-soc:#3a8062;
   }
   html[data-theme="night"]{
     --sky-1:#1b2747;
@@ -61,9 +64,9 @@
     --wood-2:#41301f;
     --wood-3:#2a1e14;
     --paper:#222e4a;
-    --paper-2:#1b2438;
+    --paper-2:#33415f;
     --ink:#f2e6cf;
-    --ink-2:#b9b2c9;
+    --ink-2:#cdc0a8;
     --gold:#f0c469;
     --berry:#e08aae;
     --leaf:#7fbf5c;
@@ -72,6 +75,9 @@
     --page:#151d30;
     --page-2:#101728;
     --scan:rgba(255,255,255,.035);
+    --water:#294a6b;
+    --water-2:#203a56;
+    --stone:#8e9aa2;
   }
 
   #acervo,#top{scroll-margin-top:80px}
@@ -192,6 +198,8 @@
   @keyframes twinkle{0%,100%{opacity:.35}50%{opacity:1}}
   .smoke{animation:smoke 4s steps(4,end) infinite;opacity:.55}
   @keyframes smoke{0%{transform:translate(0,0);opacity:.6}100%{transform:translate(-6px,-16px);opacity:0}}
+  .blades{transform-box:view-box;transform-origin:277px 79px;animation:spin 10s steps(8,end) infinite}
+  @keyframes spin{from{transform:rotate(22deg)}to{transform:rotate(382deg)}}
 
   /* ---------- CONTROLS ---------- */
   .section-head{
@@ -242,6 +250,7 @@
   }
   .card{
     position:relative;text-align:left;cursor:pointer;
+    color:var(--ink);font:inherit;
     background:var(--paper);
     border:4px solid var(--wood-3);
     box-shadow:0 6px 0 var(--shadow), inset 0 0 0 4px var(--paper-2);
@@ -259,7 +268,7 @@
     box-shadow:inset 3px 3px 0 rgba(255,255,255,.3), inset -3px -3px 0 rgba(0,0,0,.22);
     text-shadow:1px 1px 0 rgba(0,0,0,.35);
   }
-  .card h3{margin:0;font-size:19px;line-height:1.1}
+  .card h3{margin:0;font-size:19px;line-height:1.1;color:var(--ink)}
   .card__track{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin-top:4px}
   .card p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink-2);font-weight:600}
   .card__foot{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;border-top:2px dashed var(--paper-2)}
@@ -312,6 +321,82 @@
   .dlg__body li::marker{content:"▪ ";color:var(--leaf)}
   .dlg__foot{padding:0 20px 20px}
 
+  /* ---------- FARM ---------- */
+  .farm{margin-top:34px}
+  .zone-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .zone-tab{
+    display:flex;align-items:center;gap:8px;
+    font-family:"Pixelify Sans",monospace;font-size:15px;cursor:pointer;
+    padding:8px 14px;border:3px solid var(--wood-3);
+    background:var(--paper);color:var(--ink);
+    box-shadow:0 3px 0 var(--wood-3);
+  }
+  .zone-tab:hover{filter:brightness(1.06)}
+  .zone-tab[aria-selected="true"]{
+    background:var(--wood);color:#fff3d6;transform:translateY(3px);box-shadow:none;
+  }
+  .zone-tab .dot{width:9px;height:9px;background:var(--leaf);box-shadow:0 0 0 2px var(--wood-3)}
+  .zone-tab[aria-selected="true"] .dot{background:var(--gold)}
+  .scene-wrap{
+    border:4px solid var(--wood-3);
+    box-shadow:0 8px 0 var(--shadow);
+    background:var(--grass);
+    overflow-x:auto;overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+  .scene-stage{position:relative;min-width:640px;line-height:0}
+  .scene-stage[hidden]{display:none}
+  .scene{display:block;width:100%;height:auto;transition:filter .5s ease}
+  .hotspot{
+    position:absolute;padding:0;border:0;background:transparent;
+    cursor:pointer;border-radius:0;line-height:1;
+    transition:opacity .35s ease;
+  }
+  .hotspot::before{
+    content:"";position:absolute;inset:0;
+    border:3px dashed transparent;border-radius:0;
+    background:transparent;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .hotspot:hover::before,.hotspot:focus-visible::before{
+    border-color:var(--gold);
+    background:rgba(255,224,142,.16);
+  }
+  .hotspot::after{
+    content:"";position:absolute;left:50%;bottom:-6px;width:6px;height:6px;
+    margin-left:-3px;background:var(--gold);opacity:0;
+    transition:opacity .15s ease;
+  }
+  .hotspot:hover::after,.hotspot:focus-visible::after{opacity:.9}
+  .hotspot span{
+    position:absolute;left:50%;bottom:100%;margin-bottom:8px;
+    transform:translate(-50%,4px);
+    font-family:"Pixelify Sans",monospace;font-size:13px;line-height:1.2;
+    white-space:nowrap;color:#fff3d6;background:var(--wood-2);
+    border:2px solid var(--wood-3);padding:5px 9px;
+    box-shadow:0 3px 0 rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;
+    transition:opacity .12s ease,transform .12s ease;
+    z-index:5;
+  }
+  .hotspot:hover span,.hotspot:focus-visible span{opacity:1;transform:translate(-50%,0)}
+  .hotspot.is-dim{opacity:.3}
+  .scene g[data-slug]{transition:opacity .35s ease;filter:drop-shadow(0 6px 0 rgba(59,42,30,.26))}
+  html[data-theme="night"] .scene g[data-slug]{filter:drop-shadow(0 6px 0 rgba(0,0,0,.4))}
+  .scene g[data-slug].is-dim{opacity:.35}
+  .farm-hint{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    margin-top:10px;font-size:12px;font-weight:700;color:var(--ink-2);
+  }
+  .farm-hint b{color:var(--ink)}
+  @media (max-width:720px){
+    .scene-hint-mobile{display:inline}
+  }
+  .scene-hint-mobile{display:none}
+
+  /* ---------- A11Y ---------- */
+  :where(a,button,input):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
   .empty{grid-column:1/-1;text-align:center;padding:40px;font-weight:700;color:var(--ink-2)}
 
   @media (max-width:720px){
@@ -329,13 +414,76 @@
 </head>
 <body>
 
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;pointer-events:none">
+  <defs>
+    <pattern id="pgrass" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="var(--grass)"/>
+      <rect width="8" height="8" fill="var(--grass-2)" opacity=".28"/>
+      <rect x="8" y="8" width="8" height="8" fill="var(--grass-2)" opacity=".28"/>
+    </pattern>
+    <pattern id="pdirt" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="var(--dirt)"/>
+      <rect width="4" height="4" fill="var(--dirt-2)" opacity=".28"/>
+      <rect x="6" y="6" width="4" height="4" fill="var(--dirt-2)" opacity=".28"/>
+    </pattern>
+    <pattern id="pfence" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect y="2" width="22" height="3" fill="var(--wood-2)"/>
+      <rect y="10" width="22" height="3" fill="var(--wood-2)"/>
+      <rect x="8" width="5" height="22" fill="var(--wood)"/>
+    </pattern>
+    <pattern id="pwater" width="14" height="10" patternUnits="userSpaceOnUse">
+      <rect width="14" height="10" fill="var(--water)"/>
+      <rect x="2" y="3" width="6" height="2" fill="var(--water-2)" opacity=".65"/>
+      <rect x="9" y="7" width="5" height="2" fill="var(--water-2)" opacity=".65"/>
+    </pattern>
+    <pattern id="psprout" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect x="4" y="3" width="3" height="8" fill="var(--grass-3)"/>
+      <rect x="1" y="1" width="9" height="3" fill="var(--leaf)"/>
+      <rect x="2" y="0" width="7" height="2" fill="var(--grass-2)"/>
+    </pattern>
+    <pattern id="pcrop-berry" width="16" height="14" patternUnits="userSpaceOnUse">
+      <rect x="6" y="5" width="3" height="8" fill="var(--grass-3)"/>
+      <rect x="3" y="1" width="9" height="5" fill="var(--berry)"/>
+    </pattern>
+    <pattern id="pcrop-gold" width="16" height="14" patternUnits="userSpaceOnUse">
+      <rect x="6" y="5" width="3" height="8" fill="var(--grass-3)"/>
+      <rect x="3" y="1" width="9" height="5" fill="var(--gold)"/>
+    </pattern>
+    <g id="pine">
+      <rect x="9" y="28" width="6" height="12" fill="var(--wood-2)"/>
+      <rect x="0" y="20" width="24" height="10" fill="var(--grass-3)"/>
+      <rect x="3" y="12" width="18" height="9" fill="var(--grass-2)"/>
+      <rect x="6" y="4" width="12" height="9" fill="var(--leaf)"/>
+    </g>
+    <g id="tree">
+      <rect x="11" y="26" width="6" height="12" fill="var(--wood-2)"/>
+      <rect x="5" y="16" width="20" height="8" fill="var(--grass-3)"/>
+      <rect x="2" y="8" width="26" height="9" fill="var(--grass-2)"/>
+      <rect x="7" y="2" width="16" height="7" fill="var(--leaf)"/>
+    </g>
+    <g id="bush">
+      <rect x="0" y="6" width="20" height="8" fill="var(--grass-3)"/>
+      <rect x="3" y="2" width="14" height="6" fill="var(--grass-2)"/>
+      <rect x="6" y="0" width="8" height="3" fill="var(--leaf)"/>
+    </g>
+    <g id="rock">
+      <rect x="0" y="4" width="14" height="8" fill="var(--stone)"/>
+      <rect x="3" y="1" width="8" height="4" fill="#ffffff" opacity=".35"/>
+    </g>
+    <g id="flower">
+      <rect x="2" y="4" width="2" height="4" fill="var(--grass-3)"/>
+      <rect x="0" y="0" width="6" height="4" fill="var(--berry)"/>
+    </g>
+  </defs>
+</svg>
+
 <header class="hud">
   <div class="wrap hud__inner">
     <a class="logo" href="#top"><span class="seed"></span>studium.dev</a>
     <nav>
       <a href="#acervo">Acervo</a>
       <a href="#acervo">Trilhas</a>
-      <a href="#" title="em breve">Mapa</a>
+      <a href="#fazenda">Mapa</a>
     </nav>
     <div class="hud__spacer"></div>
     <div class="season">Outono · Semestre 2026.1</div>
@@ -447,13 +595,431 @@
       <p>Um acervo que cresce como uma horta: cada disciplina é um canteiro, cada resumo é uma semente, e nada aqui apodrece no fim do semestre.</p>
       <div class="hero__actions">
         <a class="btn" href="#acervo">Explorar o acervo</a>
-        <a class="btn btn--ghost" href="#" title="em breve">Ver o mapa</a>
+        <a class="btn btn--ghost" href="#fazenda">Ver o mapa</a>
       </div>
       <div class="stats">
         <div class="stat"><b id="s-disc">15</b><span>disciplinas</span></div>
         <div class="stat"><b>5</b><span>trilhas</span></div>
         <div class="stat"><b id="s-crop">1</b><span>colheitas</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="fazenda" class="farm">
+    <div class="section-head">
+      <span class="plaque">A fazenda</span>
+      <span class="rule"></span>
+      <small>clique numa construção</small>
+    </div>
+
+    <div class="zone-tabs" role="tablist" aria-label="Áreas da fazenda">
+      <button class="zone-tab" role="tab" aria-selected="true" aria-controls="zona-fazenda" data-zone="fazenda"><span class="dot"></span>Fazenda</button>
+      <button class="zone-tab" role="tab" aria-selected="false" aria-controls="zona-vila" data-zone="vila"><span class="dot"></span>Vila</button>
+      <button class="zone-tab" role="tab" aria-selected="false" aria-controls="zona-vale" data-zone="vale"><span class="dot"></span>Vale</button>
+    </div>
+
+    <div class="scene-wrap">
+      <!-- ================= FAZENDA ================= -->
+      <div class="scene-stage" id="zona-fazenda" data-zone="fazenda" role="tabpanel">
+        <svg class="scene" viewBox="0 0 560 320" role="img" aria-label="Área da fazenda: sementeira, canteiro, silo, roda d'água e horta">
+          <rect width="560" height="320" fill="url(#pgrass)"/>
+
+          <g fill="url(#pwater)">
+            <path d="M424 252 L436 252 L436 244 L468 244 L468 252 L500 252 L500 246 L536 246 L536 254 L560 254 L560 320 L424 320 Z"/>
+            <rect x="470" y="140" width="44" height="112"/>
+          </g>
+          <rect x="470" y="140" width="4" height="112" fill="var(--water-2)" opacity=".4"/>
+          <rect x="510" y="140" width="4" height="112" fill="var(--water-2)" opacity=".4"/>
+          <rect x="424" y="244" width="136" height="6" fill="var(--water-2)" opacity=".55"/>
+          <rect x="440" y="272" width="20" height="4" fill="var(--water-2)" opacity=".45"/>
+          <rect x="492" y="294" width="26" height="4" fill="var(--water-2)" opacity=".45"/>
+          <rect x="460" y="256" width="14" height="3" fill="var(--water-2)" opacity=".5"/>
+
+          <g fill="url(#pdirt)">
+            <rect x="252" y="120" width="40" height="200"/>
+            <rect x="292" y="88" width="136" height="34"/>
+            <rect x="138" y="112" width="114" height="30"/>
+            <rect x="176" y="262" width="76" height="30"/>
+          </g>
+
+          <rect x="0" y="12" width="560" height="22" fill="url(#pfence)" opacity=".95"/>
+          <rect x="0" y="12" width="6" height="22" fill="var(--wood-3)" opacity=".3"/>
+
+          <!-- SEMENTEIRA -->
+          <g data-slug="pensamento-computacional">
+            <rect x="42" y="72" width="96" height="52" fill="var(--dirt)" stroke="var(--wood-3)" stroke-width="3"/>
+            <g fill="var(--dirt-2)" opacity=".45">
+              <rect x="48" y="78" width="84" height="10"/>
+              <rect x="48" y="92" width="84" height="10"/>
+              <rect x="48" y="106" width="84" height="10"/>
+            </g>
+            <g fill="var(--leaf)">
+              <rect x="54" y="75" width="4" height="10"/><rect x="51" y="72" width="10" height="4"/>
+              <rect x="78" y="75" width="4" height="10"/><rect x="75" y="72" width="10" height="4"/>
+              <rect x="102" y="75" width="4" height="10"/><rect x="99" y="72" width="10" height="4"/>
+              <rect x="126" y="75" width="4" height="10"/><rect x="123" y="72" width="10" height="4"/>
+            </g>
+            <rect x="132" y="56" width="4" height="34" fill="var(--wood-2)"/>
+            <rect x="116" y="44" width="34" height="16" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="122" y="50" width="22" height="4" fill="var(--paper-2)" opacity=".7"/>
+          </g>
+
+          <!-- CANTEIRO -->
+          <g data-slug="introducao-programacao-computadores">
+            <rect x="150" y="155" width="96" height="64" fill="var(--dirt)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="156" y="162" width="84" height="12" fill="url(#psprout)"/>
+            <rect x="156" y="180" width="84" height="12" fill="url(#psprout)"/>
+            <rect x="156" y="198" width="84" height="12" fill="url(#psprout)"/>
+          </g>
+
+          <!-- SILO -->
+          <g data-slug="estrutura-de-dados">
+            <rect x="300" y="58" width="64" height="82" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="300" y="58" width="64" height="10" fill="#ffffff" opacity=".28"/>
+            <rect x="300" y="82" width="64" height="4" fill="var(--dirt-2)" opacity=".35"/>
+            <rect x="300" y="106" width="64" height="4" fill="var(--dirt-2)" opacity=".35"/>
+            <polygon points="296,60 332,28 368,60" fill="#a8533f" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="324" y="34" width="16" height="4" fill="#c9705a"/>
+            <rect x="318" y="108" width="28" height="32" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="356" y="66" width="3" height="66" fill="var(--wood-3)" opacity=".55"/>
+            <rect x="353" y="78" width="9" height="3" fill="var(--wood-3)" opacity=".6"/>
+            <rect x="353" y="96" width="9" height="3" fill="var(--wood-3)" opacity=".6"/>
+          </g>
+
+          <!-- RODA D'ÁGUA -->
+          <g data-slug="arquitetura-de-computadores">
+            <rect x="404" y="64" width="62" height="56" fill="#ecdcb8" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="398,64 435,40 472,64" fill="#a8533f" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="416" y="82" width="16" height="16" fill="var(--sun)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="442" y="94" width="16" height="26" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="446" y="34" width="8" height="8" fill="var(--wood-2)"/>
+            <circle cx="492" cy="112" r="27" fill="none" stroke="var(--wood-2)" stroke-width="7"/>
+            <circle cx="492" cy="112" r="6" fill="var(--wood-2)"/>
+            <g stroke="var(--wood)" stroke-width="4">
+              <line x1="492" y1="88" x2="492" y2="136"/>
+              <line x1="468" y1="112" x2="516" y2="112"/>
+              <line x1="475" y1="95" x2="509" y2="129"/>
+              <line x1="509" y1="95" x2="475" y2="129"/>
+            </g>
+            <rect x="468" y="140" width="48" height="6" fill="var(--water-2)" opacity=".55"/>
+          </g>
+
+          <!-- HORTA DE VARIEDADES -->
+          <g data-slug="paradigmas-linguagens-python">
+            <rect x="52" y="196" width="120" height="72" fill="var(--dirt)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="58" y="202" width="108" height="12" fill="url(#psprout)"/>
+            <rect x="58" y="220" width="108" height="12" fill="url(#pcrop-berry)"/>
+            <rect x="58" y="238" width="108" height="12" fill="url(#psprout)"/>
+            <rect x="58" y="254" width="108" height="10" fill="url(#pcrop-gold)"/>
+          </g>
+
+          <use href="#pine" x="492" y="150"/>
+          <use href="#pine" x="524" y="176"/>
+          <use href="#tree" x="196" y="266"/>
+          <use href="#bush" x="356" y="150"/>
+          <use href="#bush" x="238" y="286"/>
+          <use href="#rock" x="370" y="252"/>
+          <use href="#flower" x="300" y="270"/>
+          <use href="#flower" x="316" y="264"/>
+          <use href="#flower" x="200" y="140"/>
+
+          <!-- espantalho -->
+          <g>
+            <rect x="398" y="196" width="4" height="34" fill="var(--wood-2)"/>
+            <rect x="384" y="204" width="32" height="4" fill="var(--wood-2)"/>
+            <rect x="388" y="184" width="24" height="14" fill="var(--gold)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="382" y="178" width="38" height="8" fill="var(--wood)"/>
+            <rect x="392" y="190" width="4" height="4" fill="var(--ink)"/>
+            <rect x="404" y="190" width="4" height="4" fill="var(--ink)"/>
+          </g>
+
+          <!-- galinha -->
+          <g>
+            <rect x="336" y="238" width="16" height="12" fill="#f4e9d4" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="350" y="232" width="8" height="9" fill="#f4e9d4" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="356" y="234" width="4" height="3" fill="var(--gold)"/>
+            <rect x="353" y="232" width="3" height="3" fill="var(--berry)"/>
+            <rect x="338" y="242" width="3" height="3" fill="var(--ink)"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- ================= VILA ================= -->
+      <div class="scene-stage" id="zona-vila" data-zone="vila" role="tabpanel" hidden>
+        <svg class="scene" viewBox="0 0 560 320" role="img" aria-label="Área da vila: prefeitura, coreto, oficina, jardim, barraca de feira e estufa">
+          <rect width="560" height="320" fill="url(#pgrass)"/>
+
+          <rect x="0" y="156" width="560" height="34" fill="url(#pdirt)"/>
+          <rect x="0" y="154" width="560" height="3" fill="var(--dirt-2)" opacity=".35"/>
+          <rect x="0" y="189" width="560" height="3" fill="var(--dirt-2)" opacity=".35"/>
+          <g fill="url(#pdirt)">
+            <rect x="96" y="186" width="34" height="26"/>
+            <rect x="240" y="186" width="34" height="26"/>
+            <rect x="424" y="186" width="34" height="26"/>
+            <rect x="60" y="130" width="26" height="28"/>
+            <rect x="222" y="130" width="26" height="28"/>
+            <rect x="360" y="130" width="26" height="28"/>
+          </g>
+
+          <!-- PREFEITURA -->
+          <g data-slug="banco-de-dados">
+            <rect x="40" y="76" width="136" height="66" fill="#ecdcb8" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="30,76 108,40 186,76" fill="#a8533f" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="30" y="72" width="156" height="7" fill="#8d4132"/>
+            <rect x="96" y="52" width="22" height="18" fill="#f7efd6" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="103" y="58" width="8" height="3" fill="var(--wood-3)"/>
+            <rect x="106" y="56" width="2" height="10" fill="var(--wood-3)"/>
+            <g fill="#f7efd6" stroke="var(--wood-3)" stroke-width="2">
+              <rect x="52" y="90" width="10" height="52"/>
+              <rect x="80" y="90" width="10" height="52"/>
+              <rect x="126" y="90" width="10" height="52"/>
+              <rect x="154" y="90" width="10" height="52"/>
+            </g>
+            <rect x="98" y="110" width="20" height="32" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="40" y="142" width="136" height="8" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="104" y="85" width="8" height="3" fill="#c9705a"/>
+            <rect x="40" y="76" width="136" height="4" fill="#ffffff" opacity=".25"/>
+          </g>
+
+          <!-- CORETO -->
+          <g data-slug="sistemas-informacao-sociedade">
+            <polygon points="200,52 245,30 290,52" fill="#7d5a9e" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="204" y="52" width="82" height="6" fill="#6a4b88"/>
+            <g fill="#f7efd6" stroke="var(--wood-3)" stroke-width="2">
+              <rect x="208" y="58" width="7" height="42"/>
+              <rect x="230" y="58" width="7" height="42"/>
+              <rect x="252" y="58" width="7" height="42"/>
+              <rect x="274" y="58" width="7" height="42"/>
+            </g>
+            <rect x="200" y="100" width="90" height="8" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="196" y="108" width="98" height="6" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="222" y="96" width="34" height="4" fill="var(--wood-2)" opacity=".6"/>
+          </g>
+
+          <!-- OFICINA -->
+          <g data-slug="engenharia-de-software">
+            <rect x="332" y="66" width="108" height="76" fill="#d9b98d" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="322,66 386,34 450,66" fill="#7a4a2b" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="322" y="62" width="128" height="7" fill="var(--wood-2)"/>
+            <rect x="344" y="88" width="38" height="54" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <g stroke="var(--wood-3)" stroke-width="2" opacity=".5">
+              <line x1="352" y1="88" x2="352" y2="142"/>
+              <line x1="362" y1="88" x2="362" y2="142"/>
+              <line x1="372" y1="88" x2="372" y2="142"/>
+            </g>
+            <rect x="396" y="88" width="26" height="26" fill="var(--sun)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="396" y="88" width="26" height="3" fill="var(--wood-3)" opacity=".4"/>
+            <rect x="402" y="36" width="12" height="18" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <g class="smoke">
+              <rect x="406" y="24" width="5" height="5" fill="#e9e9e9"/>
+              <rect x="402" y="16" width="7" height="6" fill="#e9e9e9"/>
+            </g>
+            <!-- bigorna -->
+            <rect x="454" y="128" width="22" height="6" fill="var(--ink)"/>
+            <rect x="460" y="134" width="10" height="8" fill="var(--ink)"/>
+            <rect x="456" y="142" width="18" height="4" fill="var(--ink)"/>
+          </g>
+
+          <!-- JARDIM -->
+          <g data-slug="engenharia-de-usabilidade">
+            <rect x="44" y="196" width="124" height="80" fill="var(--grass-2)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="52" y="204" width="108" height="64" fill="#8cbf6a"/>
+            <rect x="82" y="228" width="56" height="26" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="88" y="234" width="44" height="14" fill="var(--water)"/>
+            <rect x="104" y="212" width="12" height="22" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="94" y="206" width="32" height="8" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="108" y="201" width="4" height="6" fill="var(--water)"/>
+            <rect x="96" y="208" width="28" height="3" fill="var(--water)" opacity=".8"/>
+            <g fill="var(--berry)">
+              <rect x="58" y="210" width="4" height="4"/><rect x="66" y="222" width="4" height="4"/>
+              <rect x="60" y="238" width="4" height="4"/><rect x="140" y="214" width="4" height="4"/>
+              <rect x="148" y="244" width="4" height="4"/><rect x="132" y="256" width="4" height="4"/>
+            </g>
+            <g fill="var(--gold)">
+              <rect x="76" y="252" width="4" height="4"/><rect x="120" y="208" width="4" height="4"/>
+              <rect x="146" y="228" width="4" height="4"/>
+            </g>
+            <rect x="44" y="196" width="124" height="5" fill="#6a9a3d"/>
+          </g>
+
+          <!-- BARRACA DE FEIRA -->
+          <g data-slug="desenvolvimento-web">
+            <rect x="212" y="214" width="92" height="42" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="212" y="214" width="92" height="8" fill="var(--wood-2)"/>
+            <g>
+              <rect x="204" y="196" width="108" height="18" fill="#e9e2cf" stroke="var(--wood-3)" stroke-width="3"/>
+              <g fill="#b5537a">
+                <rect x="204" y="196" width="18" height="18"/>
+                <rect x="240" y="196" width="18" height="18"/>
+                <rect x="276" y="196" width="18" height="18"/>
+              </g>
+            </g>
+            <rect x="210" y="232" width="4" height="24" fill="var(--wood-2)"/>
+            <rect x="302" y="232" width="4" height="24" fill="var(--wood-2)"/>
+            <g>
+              <rect x="222" y="202" width="14" height="10" fill="var(--gold)" stroke="var(--wood-3)" stroke-width="2"/>
+              <rect x="248" y="202" width="14" height="10" fill="var(--berry)" stroke="var(--wood-3)" stroke-width="2"/>
+              <rect x="274" y="202" width="14" height="10" fill="var(--leaf)" stroke="var(--wood-3)" stroke-width="2"/>
+            </g>
+          </g>
+
+          <!-- ESTUFA -->
+          <g data-slug="desenvolvimento-rapido-python">
+            <rect x="380" y="200" width="120" height="64" fill="#cfe8ec" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="374,200 440,174 506,200" fill="#bfe0e6" stroke="var(--wood-3)" stroke-width="3"/>
+            <g stroke="var(--wood-3)" stroke-width="2" opacity=".55">
+              <line x1="410" y1="200" x2="410" y2="264"/>
+              <line x1="440" y1="200" x2="440" y2="264"/>
+              <line x1="470" y1="200" x2="470" y2="264"/>
+              <line x1="380" y1="232" x2="500" y2="232"/>
+            </g>
+            <g fill="var(--leaf)">
+              <rect x="390" y="238" width="14" height="20"/>
+              <rect x="420" y="242" width="14" height="16"/>
+              <rect x="452" y="236" width="14" height="22"/>
+              <rect x="482" y="244" width="12" height="14"/>
+            </g>
+            <rect x="380" y="200" width="120" height="4" fill="#ffffff" opacity=".5"/>
+          </g>
+
+          <!-- postes e árvores -->
+          <g>
+            <rect x="179" y="118" width="4" height="42" fill="var(--wood-2)"/>
+            <rect x="171" y="110" width="20" height="11" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="175" y="113" width="12" height="5" fill="var(--sun)"/>
+            <rect x="173" y="121" width="16" height="3" fill="var(--wood-2)"/>
+            <rect x="331" y="118" width="4" height="42" fill="var(--wood-2)"/>
+            <rect x="323" y="110" width="20" height="11" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="327" y="113" width="12" height="5" fill="var(--sun)"/>
+            <rect x="325" y="121" width="16" height="3" fill="var(--wood-2)"/>
+          </g>
+          <use href="#tree" x="500" y="34"/>
+          <use href="#pine" x="0" y="20"/>
+          <use href="#bush" x="318" y="290"/>
+          <use href="#bush" x="180" y="284"/>
+          <use href="#rock" x="520" y="290"/>
+          <use href="#flower" x="330" y="268"/>
+          <use href="#flower" x="344" y="274"/>
+          <use href="#flower" x="100" y="292"/>
+        </svg>
+      </div>
+
+      <!-- ================= VALE ================= -->
+      <div class="scene-stage" id="zona-vale" data-zone="vale" role="tabpanel" hidden>
+        <svg class="scene" viewBox="0 0 560 320" role="img" aria-label="Área do vale: casa principal, moinho de vento, ponte sobre o lago e cerca com portão">
+          <rect width="560" height="320" fill="url(#pgrass)"/>
+
+          <!-- montanhas -->
+          <polygon points="0,84 90,20 180,84" fill="var(--grass-3)" opacity=".55"/>
+          <polygon points="120,84 220,28 320,84" fill="var(--grass-3)" opacity=".45"/>
+          <polygon points="420,84 500,34 560,76 560,84" fill="var(--grass-3)" opacity=".5"/>
+          <rect y="82" width="560" height="4" fill="var(--grass-3)" opacity=".35"/>
+
+          <!-- lago -->
+          <path d="M0 248 L24 248 L24 240 L56 240 L56 248 L96 248 L96 236 L136 236 L136 244 L184 244 L184 232 L228 232 L228 240 L276 240 L276 230 L314 230 L314 238 L330 238 L330 250 L340 250 L340 266 L330 266 L330 288 L340 288 L340 320 L0 320 Z" fill="url(#pwater)"/>
+          <path d="M0 240 L24 240 L24 232 L56 232 L56 240 L96 240 L96 228 L136 228 L136 236 L184 236 L184 224 L228 224 L228 232 L276 232 L276 222 L314 222 L314 230 L330 230 L330 242 L340 242" fill="none" stroke="var(--water-2)" stroke-width="4" opacity=".45"/>
+          <rect x="46" y="258" width="30" height="4" fill="var(--water-2)" opacity=".45"/>
+          <rect x="210" y="286" width="36" height="4" fill="var(--water-2)" opacity=".45"/>
+          <rect x="250" y="252" width="22" height="4" fill="var(--water-2)" opacity=".45"/>
+
+          <g fill="url(#pdirt)">
+            <rect x="96" y="150" width="40" height="74"/>
+            <rect x="136" y="150" width="130" height="30"/>
+            <rect x="330" y="112" width="30" height="70"/>
+            <rect x="250" y="112" width="80" height="30"/>
+            <rect x="330" y="168" width="30" height="38"/>
+          </g>
+
+          <!-- CASA -->
+          <g data-slug="sistemas-operacionais">
+            <rect x="44" y="92" width="88" height="62" fill="#e8d3ae" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="34,92 88,56 142,92" fill="#a8533f" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="34" y="88" width="108" height="8" fill="#8d4132"/>
+            <rect x="60" y="110" width="18" height="18" fill="var(--sun)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="98" y="110" width="18" height="18" fill="var(--sun)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="80" y="126" width="18" height="28" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="112" y="58" width="10" height="14" fill="var(--stone)" stroke="var(--wood-3)" stroke-width="2"/>
+            <g class="smoke">
+              <rect x="115" y="46" width="5" height="5" fill="#e9e9e9"/>
+              <rect x="111" y="37" width="7" height="6" fill="#e9e9e9"/>
+            </g>
+            <rect x="44" y="92" width="88" height="4" fill="#ffffff" opacity=".3"/>
+          </g>
+
+          <!-- MOINHO -->
+          <g data-slug="computacao-em-nuvem">
+            <rect x="252" y="86" width="48" height="66" fill="#e8d3ae" stroke="var(--wood-3)" stroke-width="3"/>
+            <polygon points="246,86 276,54 306,86" fill="#a8533f" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="268" y="112" width="16" height="22" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="252" y="86" width="48" height="4" fill="#ffffff" opacity=".3"/>
+            <g class="blades" fill="#f7efd6" stroke="var(--wood-3)" stroke-width="2">
+              <rect x="271" y="20" width="12" height="50"/>
+              <rect x="271" y="88" width="12" height="50"/>
+              <rect x="219" y="73" width="50" height="12"/>
+              <rect x="285" y="73" width="50" height="12"/>
+            </g>
+            <circle cx="277" cy="79" r="7" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+          </g>
+
+          <!-- PONTE -->
+          <g data-slug="fundamentos-redes-computadores">
+            <rect x="126" y="200" width="52" height="120" fill="var(--wood)" stroke="var(--wood-3)" stroke-width="3"/>
+            <g stroke="var(--wood-2)" stroke-width="2" opacity=".65">
+              <line x1="129" y1="212" x2="175" y2="212"/>
+              <line x1="129" y1="224" x2="175" y2="224"/>
+              <line x1="129" y1="236" x2="175" y2="236"/>
+              <line x1="129" y1="248" x2="175" y2="248"/>
+              <line x1="129" y1="260" x2="175" y2="260"/>
+              <line x1="129" y1="272" x2="175" y2="272"/>
+              <line x1="129" y1="284" x2="175" y2="284"/>
+              <line x1="129" y1="296" x2="175" y2="296"/>
+              <line x1="129" y1="308" x2="175" y2="308"/>
+            </g>
+            <rect x="117" y="198" width="9" height="122" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="178" y="198" width="9" height="122" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="113" y="192" width="15" height="9" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+            <rect x="176" y="192" width="15" height="9" fill="var(--wood-2)" stroke="var(--wood-3)" stroke-width="2"/>
+          </g>
+
+          <!-- CERCA E PORTÃO -->
+          <g data-slug="introducao-seguranca-da-informacao">
+            <rect x="356" y="170" width="86" height="22" fill="url(#pfence)"/>
+            <rect x="474" y="170" width="76" height="22" fill="url(#pfence)"/>
+            <rect x="438" y="164" width="8" height="34" fill="var(--wood-2)"/>
+            <rect x="470" y="164" width="8" height="34" fill="var(--wood-2)"/>
+            <g fill="var(--wood)">
+              <rect x="446" y="170" width="8" height="22"/>
+              <rect x="456" y="170" width="8" height="22"/>
+              <rect x="446" y="176" width="24" height="4" fill="var(--wood-2)"/>
+              <rect x="446" y="184" width="24" height="4" fill="var(--wood-2)"/>
+            </g>
+            <rect x="352" y="166" width="8" height="8" fill="var(--gold)"/>
+            <rect x="544" y="166" width="8" height="8" fill="var(--gold)"/>
+            <rect x="384" y="204" width="150" height="48" fill="var(--dirt)" stroke="var(--wood-3)" stroke-width="3"/>
+            <rect x="390" y="210" width="138" height="10" fill="url(#psprout)"/>
+            <rect x="390" y="228" width="138" height="10" fill="url(#psprout)"/>
+          </g>
+
+          <use href="#pine" x="8" y="40"/>
+          <use href="#pine" x="180" y="30"/>
+          <use href="#pine" x="330" y="180"/>
+          <use href="#pine" x="520" y="30"/>
+          <use href="#pine" x="470" y="100"/>
+          <use href="#tree" x="360" y="60"/>
+          <use href="#bush" x="200" y="196"/>
+          <use href="#bush" x="316" y="250"/>
+          <use href="#rock" x="40" y="200"/>
+          <use href="#rock" x="500" y="220"/>
+          <use href="#flower" x="210" y="120"/>
+          <use href="#flower" x="196" y="128"/>
+          <use href="#flower" x="330" y="220"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="farm-hint">
+      <span><b>O acervo é um lugar.</b> Cada construção guarda uma disciplina — clique para abrir.</span>
+      <span class="scene-hint-mobile">arraste para o lado para explorar →</span>
     </div>
   </section>
 
@@ -518,6 +1084,27 @@ const TRACKS = {
 };
 
 const STAGES = ["Semente", "Broto", "Muda", "Floração", "Colheita"];
+
+/* posição de cada disciplina nas áreas da fazenda (unidades do viewBox 560x320) */
+const FARM = {
+  "pensamento-computacional":        { zone:"fazenda", x:34,  y:50,  w:112, h:78 },
+  "introducao-programacao-computadores": { zone:"fazenda", x:144, y:148, w:108, h:78 },
+  "estrutura-de-dados":              { zone:"fazenda", x:292, y:22,  w:80,  h:122 },
+  "arquitetura-de-computadores":     { zone:"fazenda", x:396, y:32,  w:128, h:118 },
+  "paradigmas-linguagens-python":    { zone:"fazenda", x:44,  y:188, w:136, h:86 },
+
+  "banco-de-dados":                  { zone:"vila",    x:26,  y:28,  w:164, h:124 },
+  "sistemas-informacao-sociedade":   { zone:"vila",    x:192, y:22,  w:106, h:98 },
+  "engenharia-de-software":          { zone:"vila",    x:316, y:26,  w:164, h:128 },
+  "engenharia-de-usabilidade":       { zone:"vila",    x:36,  y:188, w:140, h:94 },
+  "desenvolvimento-web":             { zone:"vila",    x:196, y:188, w:128, h:76 },
+  "desenvolvimento-rapido-python":   { zone:"vila",    x:366, y:170, w:148, h:100 },
+
+  "sistemas-operacionais":           { zone:"vale",    x:26,  y:48,  w:124, h:114 },
+  "computacao-em-nuvem":             { zone:"vale",    x:222, y:20,  w:112, h:136 },
+  "fundamentos-redes-computadores":  { zone:"vale",    x:108, y:192, w:96,  h:98 },
+  "introducao-seguranca-da-informacao": { zone:"vale", x:346, y:154, w:212, h:62 }
+};
 
 const DISCIPLINAS = [
   { slug:"pensamento-computacional", title:"Pensamento Computacional", track:"fundamentos", stage:2,
@@ -630,6 +1217,58 @@ function render(){
   $("#s-count").textContent = lista.length + (lista.length === 1 ? " disciplina" : " disciplinas") + " · " + Object.keys(TRACKS).length + " trilhas";
 }
 
+/* ---------- fazenda ---------- */
+const zonas = [...document.querySelectorAll(".zone-tab")];
+
+function renderFazenda(){
+  document.querySelectorAll(".scene-stage").forEach(stage => {
+    const zona = stage.dataset.zone;
+    stage.querySelectorAll(".hotspot").forEach(n => n.remove());
+    DISCIPLINAS.filter(d => FARM[d.slug] && FARM[d.slug].zone === zona).forEach(d => {
+      const f = FARM[d.slug];
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "hotspot";
+      b.dataset.slug = d.slug;
+      b.dataset.track = d.track;
+      b.style.left   = (f.x / 560 * 100) + "%";
+      b.style.top    = (f.y / 320 * 100) + "%";
+      b.style.width  = (f.w / 560 * 100) + "%";
+      b.style.height = (f.h / 320 * 100) + "%";
+      b.setAttribute("aria-label", "Abrir " + d.title);
+      b.innerHTML = `<span>${d.title}</span>`;
+      b.addEventListener("click", () => abrir(d.slug));
+      stage.appendChild(b);
+    });
+  });
+  aplicarDestaque();
+}
+
+function selecionarZona(zona){
+  zonas.forEach(t => t.setAttribute("aria-selected", String(t.dataset.zone === zona)));
+  document.querySelectorAll(".scene-stage").forEach(s => { s.hidden = s.dataset.zone !== zona; });
+}
+
+function combina(d){
+  const okTrack = filtro === "todas" || d.track === filtro;
+  const okBusca = !busca || d.title.toLowerCase().includes(busca.toLowerCase());
+  return okTrack && okBusca;
+}
+
+function aplicarDestaque(){
+  document.querySelectorAll(".hotspot").forEach(h => {
+    const d = DISCIPLINAS.find(x => x.slug === h.dataset.slug);
+    h.classList.toggle("is-dim", !!d && !combina(d));
+  });
+  document.querySelectorAll(".scene g[data-slug]").forEach(g => {
+    const d = DISCIPLINAS.find(x => x.slug === g.dataset.slug);
+    g.classList.toggle("is-dim", !!d && !combina(d));
+  });
+}
+
+zonas.forEach(t => t.addEventListener("click", () => selecionarZona(t.dataset.zone)));
+
+
 function abrir(slug){
   const d = DISCIPLINAS.find(x => x.slug === slug);
   if (!d) return;
@@ -651,12 +1290,13 @@ chips.addEventListener("click", e => {
   filtro = b.dataset.f;
   renderChips();
   render();
+  aplicarDestaque();
 });
 grid.addEventListener("click", e => {
   const c = e.target.closest(".card");
   if (c) abrir(c.dataset.slug);
 });
-$("#q").addEventListener("input", e => { busca = e.target.value; render(); });
+$("#q").addEventListener("input", e => { busca = e.target.value; render(); aplicarDestaque(); });
 $("#m-close").addEventListener("click", () => modal.close());
 modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
 
@@ -673,9 +1313,12 @@ if (params.has("noite")) {
   btnTema.textContent = "☾";
 }
 if (params.has("abrir")) setTimeout(() => abrir(params.get("abrir")), 150);
+if (params.has("zona")) selecionarZona(params.get("zona"));
+if (params.has("filtro")) filtro = params.get("filtro");
 
 renderChips();
 render();
+renderFazenda();
 </script>
 </body>
 </html>
