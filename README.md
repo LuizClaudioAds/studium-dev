@@ -132,11 +132,11 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 
 | # | Disciplina | Trilha | Situação |
 | :-: | :--- | :--- | :--- |
-| 01 | Pensamento Computacional | Fundamentos | 🟡 estruturando |
-| 02 | Introdução à Programação de Computadores | Fundamentos | 🟡 estruturando |
-| 03 | Fundamentos de Redes de Computadores | Infraestrutura | 🟡 estruturando |
-| 04 | Introdução à Segurança da Informação | Infraestrutura | 🟡 estruturando |
-| 05 | Computação em Nuvem | Infraestrutura | 🟡 estruturando |
+| 01 | Pensamento Computacional | Fundamentos | 🟢 com materiais |
+| 02 | Introdução à Programação de Computadores | Fundamentos | 🟢 com materiais |
+| 03 | Fundamentos de Redes de Computadores | Infraestrutura | 🟢 com materiais |
+| 04 | Introdução à Segurança da Informação | Infraestrutura | 🟢 com materiais |
+| 05 | Computação em Nuvem | Infraestrutura | 🟢 com materiais |
 | 06 | Desenvolvimento Web em HTML5, CSS, JavaScript e PHP | Dados & Web | 🟡 estruturando |
 | 07 | Estrutura de Dados | Fundamentos | 🟡 estruturando |
 | 08 | Arquitetura de Computadores | Fundamentos | 🟡 estruturando |
@@ -148,7 +148,7 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 | 14 | Engenharia de Software | Engenharia | 🟡 estruturando |
 | 15 | Sistemas de Informação e Sociedade | Sociedade | 🟡 estruturando |
 
-**Legenda:** ⬜ vazia · 🟡 estruturando · 🟢 com resumos · 🔵 com exercícios · 🟣 com projeto
+**Legenda:** ⬜ vazia · 🟡 estruturando · 🟢 com materiais · 🔵 com resumos · 🟣 com projeto
 
 ---
 
