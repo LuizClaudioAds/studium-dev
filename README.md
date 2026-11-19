@@ -182,6 +182,19 @@ O Markdown continua sendo a **fonte da verdade**; o arquivo gerado é versionado
 o site funcione mesmo aberto direto do disco. O GitHub Actions roda o mesmo comando a
 cada push e falha se alguém esquecer de regenerar.
 
+### Publicação
+
+O workflow `pages.yml` publica a pasta `preview/` no GitHub Pages.
+
+**Na primeira vez**, habilite em **Settings → Pages → Source: GitHub Actions**. Sem esse
+passo o workflow apenas verifica e encerra sem publicar (e sem quebrar o build).
+
+Com o Pages habilitado, o site fica em:
+
+```text
+https://luizclaudioads.github.io/studium-dev/
+```
+
 ## Próximo passo
 
 O esqueleto e a camada visual existem. Agora o acervo precisa de **substância**: os

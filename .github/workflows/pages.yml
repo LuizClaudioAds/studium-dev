@@ -15,7 +15,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    outputs:
+      habilitado: ${{ steps.check.outputs.habilitado }}
+    steps:
+      - name: Verificar se o Pages esta habilitado
+        id: check
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+          echo "Pages API: $status"
+          if [ "$status" = "200" ]; then
+            echo "habilitado=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "habilitado=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Pages ainda nao esta habilitado. Settings > Pages > Source: GitHub Actions."
+          fi
+
   deploy:
+    needs: preparar
+    if: needs.preparar.outputs.habilitado == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -29,8 +51,6 @@ jobs:
         run: npm run build
       - name: Configurar Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Empacotar site
         uses: actions/upload-pages-artifact@v3
         with:
