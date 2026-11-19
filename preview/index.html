@@ -352,6 +352,7 @@
   }
   .leitor__nav .btn{font-size:14px;padding:7px 12px}
   .leitor__nav .btn[disabled]{opacity:.35;cursor:not-allowed}
+  .leitor__nav #l-copy{font-size:12.5px;padding:6px 10px}
   .md h1{font-size:26px;line-height:1.1;margin:0 0 14px}
   .md h2{font-size:19px;margin:26px 0 8px;padding-bottom:4px;border-bottom:3px dashed var(--paper-2)}
   .md h3{font-size:16px;margin:20px 0 6px}
@@ -1150,6 +1151,7 @@
   <article class="md" id="l-body"></article>
   <div class="leitor__nav" id="l-nav">
     <button class="btn btn--ghost" id="l-prev">← anterior</button>
+    <button class="btn btn--ghost" id="l-copy">copiar link</button>
     <button class="btn btn--ghost" id="l-next">próximo →</button>
   </div>
 </dialog>
@@ -1269,7 +1271,7 @@ function renderFazenda(){
       b.style.height = (f.h / 320 * 100) + "%";
       b.setAttribute("aria-label", "Abrir " + d.title);
       b.innerHTML = `<span>${d.title}</span>`;
-      b.addEventListener("click", () => abrir(d.slug));
+      b.addEventListener("click", () => irPara(hashDisciplina(d.slug)));
       stage.appendChild(b);
     });
   });
@@ -1301,9 +1303,18 @@ function aplicarDestaque(){
 zonas.forEach(t => t.addEventListener("click", () => selecionarZona(t.dataset.zone)));
 
 
-function abrir(slug){
-  const d = DISCIPLINAS.find(x => x.slug === slug);
-  if (!d) return;
+let disciplinaAtual = null;
+const leitor = $("#leitor");
+
+const hashDisciplina = (slug) => "#/" + slug;
+const hashResumo = (d, idx) => {
+  const r = d.resumos[idx];
+  return "#/" + d.slug + "/" + (r.numero || r.arquivo.replace(/\.md$/, ""));
+};
+const rotaAtual = () => location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
+const irPara = (hash) => { if (location.hash !== hash) location.hash = hash; };
+
+function preencherModal(d){
   disciplinaAtual = d;
   const t = TRACKS[d.track];
   $("#m-plot").textContent = t.letra;
@@ -1332,14 +1343,9 @@ function abrir(slug){
   $("#m-open").onclick = () => {
     location.href = "https://github.com/LuizClaudioAds/studium-dev/blob/main/disciplinas/" + d.slug + "/README.md";
   };
-  modal.showModal();
 }
 
-/* ---------- leitor de resumos ---------- */
-let disciplinaAtual = null;
-const leitor = $("#leitor");
-
-function abrirResumo(d, idx){
+function mostrarResumo(d, idx){
   const r = d.resumos[idx];
   if (!r) return;
   $("#l-title").textContent = r.completo;
@@ -1348,20 +1354,96 @@ function abrirResumo(d, idx){
   $("#l-body").scrollTop = 0;
   $("#l-prev").disabled = idx === 0;
   $("#l-next").disabled = idx === d.resumos.length - 1;
-  $("#l-prev").onclick = () => abrirResumo(d, idx - 1);
-  $("#l-next").onclick = () => abrirResumo(d, idx + 1);
+  leitor.dataset.slug = d.slug;
+  leitor.dataset.idx = String(idx);
   if (!leitor.open) leitor.showModal();
 }
+
+/* ---------- rotas ---------- */
+function aplicarRota(){
+  const [slug, alvo] = rotaAtual();
+  const d = DISCIPLINAS.find(x => x.slug === slug);
+
+  if (!d) {
+    if (leitor.open) leitor.close();
+    if (modal.open) modal.close();
+    return;
+  }
+
+  if (!modal.open) {
+    preencherModal(d);
+    modal.showModal();
+  } else if (disciplinaAtual?.slug !== d.slug) {
+    preencherModal(d);
+  }
+
+  if (!alvo) {
+    if (leitor.open) leitor.close();
+    return;
+  }
+
+  const idx = d.resumos.findIndex(
+    r => r.numero === alvo || r.arquivo.replace(/\.md$/, "") === alvo
+  );
+
+  if (idx >= 0) {
+    const mudou = leitor.dataset.slug !== d.slug || leitor.dataset.idx !== String(idx);
+    if (!leitor.open || mudou) {
+      preencherModal(d);
+      mostrarResumo(d, idx);
+    }
+  } else if (leitor.open) {
+    leitor.close();
+  }
+}
+
+window.addEventListener("hashchange", aplicarRota);
 
 $("#m-resumos").addEventListener("click", e => {
   const b = e.target.closest(".resumo-item");
   if (!b || !disciplinaAtual) return;
-  abrirResumo(disciplinaAtual, Number(b.dataset.i));
+  irPara(hashResumo(disciplinaAtual, Number(b.dataset.i)));
 });
-$("#l-close").addEventListener("click", () => leitor.close());
-leitor.addEventListener("click", e => { if (e.target === leitor) leitor.close(); });
+
+$("#l-prev").onclick = () => {
+  const i = Number(leitor.dataset.idx);
+  if (disciplinaAtual && i > 0) irPara(hashResumo(disciplinaAtual, i - 1));
+};
+$("#l-next").onclick = () => {
+  const i = Number(leitor.dataset.idx);
+  if (disciplinaAtual && i < disciplinaAtual.resumos.length - 1) irPara(hashResumo(disciplinaAtual, i + 1));
+};
+
+$("#l-close").addEventListener("click", () => {
+  irPara(disciplinaAtual ? hashDisciplina(disciplinaAtual.slug) : "#/");
+});
+leitor.addEventListener("click", e => {
+  if (e.target === leitor) $("#l-close").click();
+});
+leitor.addEventListener("close", () => {
+  const p = rotaAtual();
+  if (p[1]) irPara("#/" + p[0]);
+});
+
+modal.addEventListener("close", () => {
+  const p = rotaAtual();
+  if (p[0]) irPara("#/");
+  if (leitor.open) leitor.close();
+});
+
 $("#l-body").addEventListener("click", e => {
   if (e.target.closest("a")) e.preventDefault();
+});
+
+$("#l-copy").addEventListener("click", async () => {
+  const btn = $("#l-copy");
+  try {
+    await navigator.clipboard.writeText(location.href);
+  } catch {
+    prompt("Copie o link do resumo:", location.href);
+  }
+  btn.textContent = "copiado!";
+  setTimeout(() => { btn.textContent = "copiar link"; }, 1600);
 });
 
 chips.addEventListener("click", e => {
@@ -1374,7 +1456,7 @@ chips.addEventListener("click", e => {
 });
 grid.addEventListener("click", e => {
   const c = e.target.closest(".card");
-  if (c) abrir(c.dataset.slug);
+  if (c) irPara(hashDisciplina(c.dataset.slug));
 });
 $("#q").addEventListener("input", e => { busca = e.target.value; render(); aplicarDestaque(); });
 $("#m-close").addEventListener("click", () => modal.close());
@@ -1392,11 +1474,11 @@ if (params.has("noite")) {
   document.documentElement.dataset.theme = "night";
   btnTema.textContent = "☾";
 }
-if (params.has("abrir")) setTimeout(() => abrir(params.get("abrir")), 150);
+if (params.has("abrir")) setTimeout(() => irPara(hashDisciplina(params.get("abrir"))), 150);
 if (params.has("ler")) {
   setTimeout(() => {
     const d = DISCIPLINAS.find(x => x.slug === params.get("ler"));
-    if (d && d.resumos.length) { abrir(d.slug); abrirResumo(d, 0); }
+    if (d && d.resumos.length) irPara(hashResumo(d, 0));
   }, 200);
 }
 if (params.has("zona")) selecionarZona(params.get("zona"));
@@ -1405,6 +1487,7 @@ if (params.has("filtro")) filtro = params.get("filtro");
 renderChips();
 render();
 renderFazenda();
+aplicarRota();
 </script>
 </body>
 </html>

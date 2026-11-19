@@ -163,6 +163,9 @@ no navegador.
 - **Canteiros** — a mesma informação em forma de lista, com busca e filtro por trilha.
 - **Leitor** — clique em uma disciplina e escolha um resumo: ele abre dentro do site,
   com navegação entre os temas.
+- **Link direto** — cada disciplina e cada resumo tem endereço próprio, por exemplo
+  `#/fundamentos-redes-computadores/03`. Funciona com voltar/avançar do navegador, e o
+  leitor tem um botão "copiar link".
 - **Dia e noite** — o botão no topo troca a iluminação da cena.
 - Tudo em pixel art autoral desenhada em SVG: nada de asset de terceiros.
 
