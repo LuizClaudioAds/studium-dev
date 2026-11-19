@@ -154,15 +154,30 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 
 ## Prévia visual
 
-`preview/index.html` é um protótipo navegável, sem build e sem dependência: abra o arquivo
+`preview/index.html` é o site, sem build de front-end e sem dependência: abra o arquivo
 no navegador.
 
 - **A fazenda** — o acervo como lugar, dividido em três áreas. Cada construção é uma
   disciplina: a sementeira, o silo, a roda d'água, a prefeitura, o coreto, o moinho,
   a ponte. Clique e a disciplina abre.
 - **Canteiros** — a mesma informação em forma de lista, com busca e filtro por trilha.
+- **Leitor** — clique em uma disciplina e escolha um resumo: ele abre dentro do site,
+  com navegação entre os temas.
 - **Dia e noite** — o botão no topo troca a iluminação da cena.
 - Tudo em pixel art autoral desenhada em SVG: nada de asset de terceiros.
+
+### O conteúdo vem do Markdown
+
+O site não guarda texto próprio. Um script lê os `README.md` e os `resumos/*.md` de cada
+disciplina e gera `preview/conteudo.js`:
+
+```bash
+npm run build
+```
+
+O Markdown continua sendo a **fonte da verdade**; o arquivo gerado é versionado para que
+o site funcione mesmo aberto direto do disco. O GitHub Actions roda o mesmo comando a
+cada push e falha se alguém esquecer de regenerar.
 
 ## Próximo passo
 

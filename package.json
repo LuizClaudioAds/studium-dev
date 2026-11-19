@@ -1,0 +1,10 @@
+{
+  "name": "studium-dev",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Acervo academico pessoal: disciplinas, resumos e uma fazenda navegavel.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

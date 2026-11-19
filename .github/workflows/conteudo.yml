@@ -1,0 +1,18 @@
+name: conteudo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Gerar conteudo
+        run: npm run build
+      - name: Falhar se conteudo.js estiver desatualizado
+        run: git diff --exit-code preview/conteudo.js

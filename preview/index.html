@@ -303,7 +303,9 @@
     background:var(--paper);color:var(--ink);
     box-shadow:0 10px 0 var(--shadow), inset 0 0 0 4px var(--paper-2);
     padding:0;max-width:560px;width:calc(100% - 32px);
+    max-height:88vh;flex-direction:column;
   }
+  #modal[open]{display:flex}
   dialog::backdrop{background:var(--overlay)}
   .dlg__head{
     display:flex;align-items:center;gap:14px;
@@ -313,13 +315,72 @@
   .dlg__head h3{margin:0;font-size:22px}
   .dlg__head p{margin:3px 0 0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;opacity:.85}
   .dlg__close{margin-left:auto}
-  .dlg__body{padding:20px}
+  .dlg__body{padding:20px;overflow-y:auto}
   .dlg__body h4{margin:18px 0 8px;font-family:"Pixelify Sans",monospace;font-size:16px;color:var(--ink-2)}
   .dlg__body h4:first-child{margin-top:0}
   .dlg__body p{margin:0;font-size:14.5px;line-height:1.6;font-weight:600}
   .dlg__body ul{margin:0;padding-left:18px;font-size:14px;line-height:1.8;font-weight:600}
   .dlg__body li::marker{content:"▪ ";color:var(--leaf)}
   .dlg__foot{padding:0 20px 20px}
+
+  /* ---------- LISTA DE RESUMOS ---------- */
+  .resumo-lista{display:flex;flex-direction:column;gap:6px}
+  .resumo-item{
+    display:flex;align-items:center;gap:10px;width:100%;text-align:left;cursor:pointer;
+    background:var(--paper-2);border:2px solid var(--wood-3);
+    padding:8px 10px;color:var(--ink);font:inherit;font-size:13.5px;font-weight:700;
+  }
+  .resumo-item:hover{background:var(--paper);transform:translateX(2px)}
+  .resumo-item .num{
+    font-family:"Pixelify Sans",monospace;font-size:12px;background:var(--wood);
+    color:#fff3d6;padding:2px 6px;border:2px solid var(--wood-3);flex:none;
+  }
+  .resumo-item .min{margin-left:auto;font-size:11px;font-weight:800;color:var(--ink-2);white-space:nowrap}
+
+  /* ---------- LEITOR ---------- */
+  #leitor{max-width:760px;width:calc(100% - 32px);max-height:88vh;padding:0;flex-direction:column}
+  #leitor[open]{display:flex}
+  .leitor__head{max-width:100%}
+  .leitor__head h3{font-size:20px;line-height:1.15}
+  .md{
+    padding:24px;overflow-y:auto;flex:1;
+    font-size:15px;line-height:1.7;font-weight:600;color:var(--ink);
+  }
+  .leitor__nav{
+    display:flex;justify-content:space-between;gap:10px;
+    padding:12px 16px;border-top:3px solid var(--wood-3);background:var(--paper-2);
+  }
+  .leitor__nav .btn{font-size:14px;padding:7px 12px}
+  .leitor__nav .btn[disabled]{opacity:.35;cursor:not-allowed}
+  .md h1{font-size:26px;line-height:1.1;margin:0 0 14px}
+  .md h2{font-size:19px;margin:26px 0 8px;padding-bottom:4px;border-bottom:3px dashed var(--paper-2)}
+  .md h3{font-size:16px;margin:20px 0 6px}
+  .md p{margin:0 0 12px}
+  .md ul,.md ol{margin:0 0 14px;padding-left:20px}
+  .md li{margin-bottom:5px}
+  .md li::marker{color:var(--leaf)}
+  .md blockquote{
+    margin:0 0 16px;padding:10px 14px;border-left:4px solid var(--gold);
+    background:var(--paper-2);font-size:13.5px;color:var(--ink-2);
+  }
+  .md blockquote p:last-child{margin:0}
+  .md code{
+    font-family:Consolas,monospace;font-size:.9em;
+    background:var(--paper-2);padding:1px 5px;border:1px solid var(--wood-3);
+  }
+  .md pre{
+    background:var(--paper-2);border:3px solid var(--wood-3);padding:12px;
+    overflow-x:auto;margin:0 0 16px;
+  }
+  .md pre code{background:none;border:0;padding:0;font-size:13px;line-height:1.55}
+  .md hr{border:0;border-top:3px dashed var(--paper-2);margin:22px 0}
+  .md a{color:var(--berry);font-weight:800}
+  .md .tabela{overflow-x:auto;margin:0 0 16px}
+  .md table{border-collapse:collapse;width:100%;font-size:13.5px}
+  .md th,.md td{border:2px solid var(--wood-3);padding:6px 9px;text-align:left;vertical-align:top}
+  .md th{background:var(--wood);color:#fff3d6;font-family:"Pixelify Sans",monospace;font-weight:400}
+  .md tr:nth-child(even) td{background:var(--paper-2)}
+  .md sub{font-size:11px;color:var(--ink-2)}
 
   /* ---------- FARM ---------- */
   .farm{margin-top:34px}
@@ -600,7 +661,7 @@
       <div class="stats">
         <div class="stat"><b id="s-disc">15</b><span>disciplinas</span></div>
         <div class="stat"><b>5</b><span>trilhas</span></div>
-        <div class="stat"><b id="s-crop">1</b><span>colheitas</span></div>
+        <div class="stat"><b id="s-resumos">0</b><span>resumos</span></div>
       </div>
     </div>
   </section>
@@ -1068,12 +1129,32 @@
     <ul id="m-topics"></ul>
     <h4>Por que importa depois</h4>
     <p id="m-why"></p>
+    <div id="m-resumos-wrap" hidden>
+      <h4>Resumos por tema</h4>
+      <div class="resumo-lista" id="m-resumos"></div>
+    </div>
   </div>
   <div class="dlg__foot">
-    <button class="btn btn--ghost" id="m-open">Abrir no repositório →</button>
+    <button class="btn btn--ghost" id="m-open">Abrir no GitHub →</button>
   </div>
 </dialog>
 
+<dialog id="leitor">
+  <div class="dlg__head">
+    <div class="leitor__head">
+      <h3 id="l-title">Resumo</h3>
+      <p id="l-sub"></p>
+    </div>
+    <button class="icon-btn dlg__close" id="l-close" aria-label="Fechar leitura">✕</button>
+  </div>
+  <article class="md" id="l-body"></article>
+  <div class="leitor__nav" id="l-nav">
+    <button class="btn btn--ghost" id="l-prev">← anterior</button>
+    <button class="btn btn--ghost" id="l-next">próximo →</button>
+  </div>
+</dialog>
+
+<script src="conteudo.js"></script>
 <script>
 const TRACKS = {
   fundamentos: { nome: "Fundamentos", cor: "var(--f-fund)", letra: "F" },
@@ -1106,68 +1187,19 @@ const FARM = {
   "introducao-seguranca-da-informacao": { zone:"vale", x:346, y:154, w:212, h:62 }
 };
 
-const DISCIPLINAS = [
-  { slug:"pensamento-computacional", title:"Pensamento Computacional", track:"fundamentos", stage:4,
-    tag:"Decompor um problema grande em partes pequenas o suficiente para que uma máquina — ou uma pessoa — resolva em sequência.",
-    topics:["Decomposição de problemas","Abstração","Reconhecimento de padrões","Algoritmos e fluxogramas"],
-    why:"Ninguém programa um sistema inteiro de uma vez. O hábito de estruturar o pensamento antes de digitar vale para arquitetura, dados e até para a rotina." },
-  { slug:"introducao-programacao-computadores", title:"Introdução à Programação", track:"fundamentos", stage:4,
-    tag:"A primeira vez em que uma ideia na cabeça vira instrução executável — e a descoberta de que o computador só é obediente e rápido.",
-    topics:["Variáveis e tipos","Condicionais e repetição","Funções","Vetores e depuração"],
-    why:"Toda linguagem que eu aprender depois é uma variação disso. O aprendizado durável é traduzir problema em passos explícitos." },
-  { slug:"estrutura-de-dados", title:"Estrutura de Dados", track:"fundamentos", stage:3,
-    tag:"Escolher onde guardar o dado é metade da solução — e a diferença entre um programa que voa e um que engasga.",
-    topics:["Listas, pilhas e filas","Árvores e grafos","Busca e ordenação","Complexidade Big-O"],
-    why:"Quando um endpoint começa a demorar, a causa costuma ser uma busca linear onde cabia um índice. É a disciplina que transforma «funciona» em «funciona bem»." },
-  { slug:"arquitetura-de-computadores", title:"Arquitetura de Computadores", track:"fundamentos", stage:2,
-    tag:"Descer um nível na abstração e ver a máquina de verdade: o que acontece quando o código vira instrução.",
-    topics:["Modelo de von Neumann","CPU, cache e memória","Binário e hexadecimal","Barramentos e E/S"],
-    why:"Entender cache explica por que um loop desordenado é mais lento. Entender binário explica bugs de ponto flutuante. É respeitar o custo das abstrações." },
-  { slug:"paradigmas-linguagens-python", title:"Paradigmas de Linguagens", track:"fundamentos", stage:2,
-    tag:"Linguagem é ferramenta; paradigma é forma de pensar. A mesma lógica, vista por ângulos diferentes.",
-    topics:["Imperativo, funcional e OO","Tipagem e escopo","Closures e decorators","Idiomas de Python"],
-    why:"Quem só sabe um paradigma usa martelo para tudo. Escolher a solução que cabe no problema melhora o código em qualquer linguagem." },
-  { slug:"fundamentos-redes-computadores", title:"Fundamentos de Redes", track:"infra", stage:4,
-    tag:"Entender o caminho que um pacote percorre entre dois computadores — e por que, na maioria das vezes, ele chega.",
-    topics:["OSI e TCP/IP","IP, TCP, UDP, DNS","Sub-redes e roteamento","Portas e sockets"],
-    why:"Quando uma aplicação «não funciona», a causa raramente está no código: é DNS, firewall ou porta. Redes me dá vocabulário para diagnosticar em vez de adivinhar." },
-  { slug:"sistemas-operacionais", title:"Sistemas Operacionais", track:"infra", stage:2,
-    tag:"O mestre de cerimônias invisível: decide quem usa a CPU, quem espera e o que acontece quando alguém abusa.",
-    topics:["Processos e threads","Escalonamento","Memória virtual","Concorrência e deadlock"],
-    why:"Quando a aplicação trava ou duas threads corrompem o mesmo dado, a resposta está aqui. Entender concorrência evita bugs que só aparecem em produção." },
-  { slug:"computacao-em-nuvem", title:"Computação em Nuvem", track:"infra", stage:4,
-    tag:"Alugar infraestrutura sob demanda e parar de pensar em servidor como caixa física.",
-    topics:["IaaS, PaaS e SaaS","Virtualização e contêineres","Regiões e disponibilidade","Custo e SLAs"],
-    why:"Quase todo software roda em nuvem. Escolher entre VM, serviço gerenciado ou serverless é decisão de arquitetura — e de orçamento." },
-  { slug:"introducao-seguranca-da-informacao", title:"Segurança da Informação", track:"infra", stage:4,
-    tag:"Segurança não é um produto que se instala no final — é uma propriedade decidida a cada permissão e cada acesso.",
-    topics:["Tríade CIA","Ameaças e superfície de ataque","Autenticação e autorização","Criptografia e hashing"],
-    why:"Todo sistema nasce exposto. Os erros mais comuns são de projeto, não de ferramenta. É o que protege usuário, empresa e carreira." },
-  { slug:"banco-de-dados", title:"Banco de Dados", track:"dados", stage:3,
-    tag:"Dado é o ativo mais caro que um sistema tem — e modelar errado cobra juros para sempre.",
-    topics:["Modelo relacional","SQL e joins","Normalização","Transações e índices"],
-    why:"A diferença entre uma consulta de 20 ms e uma que derruba o servidor quase nunca está na aplicação: está no modelo e nos índices." },
-  { slug:"desenvolvimento-web", title:"Desenvolvimento Web", track:"dados", stage:3,
-    tag:"A primeira vez em que o código vira uma página que qualquer pessoa consegue abrir — do HTML ao backend em PHP.",
-    topics:["HTML semântico","CSS e responsividade","DOM e eventos","PHP e formulários"],
-    why:"É o primeiro ponta a ponta: tela, interação, servidor e dado. O modelo mental permanece mesmo quando o framework muda." },
-  { slug:"engenharia-de-software", title:"Engenharia de Software", track:"engenharia", stage:3,
-    tag:"Programar sozinho é artesanato; construir software é engenharia — processo, requisitos, testes e pessoas.",
-    topics:["Ciclo de vida","Requisitos e UML","Metodologias ágeis","Testes e versionamento"],
-    why:"Código que ninguém entende é dívida, não entrega. É o que separa um projeto que sobrevive de um que morre no segundo mês." },
-  { slug:"engenharia-de-usabilidade", title:"Engenharia de Usabilidade", track:"engenharia", stage:2,
-    tag:"Software bom não é o que tem mais funcionalidade — é o que a pessoa consegue usar sem pensar e sem desistir.",
-    topics:["Heurísticas de Nielsen","Personas e jornadas","Testes com usuários","Acessibilidade"],
-    why:"De nada adianta um backend impecável se ninguém entende onde clicar. Observar alguém usando sem explicação é o feedback mais honesto." },
-  { slug:"desenvolvimento-rapido-python", title:"Desenvolvimento Rápido em Python", track:"engenharia", stage:2,
-    tag:"Sair da ideia para algo funcionando no menor tempo possível — e aprender que protótipo bom responde uma pergunta.",
-    topics:["Frameworks web e APIs","Rotas e validação","Bibliotecas","Automação e deploy"],
-    why:"A maior parte do valor aparece antes do «perfeito». Prototipar rápido permite testar com usuário real em dias, não em meses." },
-  { slug:"sistemas-informacao-sociedade", title:"Sistemas de Informação e Sociedade", track:"sociedade", stage:1,
-    tag:"Tecnologia não é neutra: cada sistema decide quem é incluído, quem é vigiado e quem fica de fora.",
-    topics:["Impactos sociais","Ética e privacidade","Inclusão digital","LGPD e responsabilidade"],
-    why:"Um algoritmo de crédito ou uma política de moderação mudam vidas reais. É o contrapeso humanístico da formação técnica." }
-];
+const DADOS = window.CONTEUDO || { disciplinas: [] };
+
+const DISCIPLINAS = DADOS.disciplinas.map(d => ({
+  slug: d.slug,
+  title: d.titulo,
+  track: d.trilha,
+  stage: d.estagio,
+  tag: d.fraseHtml || d.frase,
+  topics: d.ficouHtml || d.ficou,
+  why: d.porqueHtml || d.porque,
+  resumos: d.resumos || [],
+  materiais: d.materiais || 0
+}));
 
 const $ = (s, el = document) => el.querySelector(s);
 const grid = $("#grid");
@@ -1213,7 +1245,7 @@ function render(){
       </button>`;
   }).join("") : `<div class="empty">Nada plantado aqui ainda. 🌱</div>`;
   $("#s-disc").textContent = DISCIPLINAS.length;
-  $("#s-crop").textContent = DISCIPLINAS.filter(d => d.stage === 5).length;
+  $("#s-resumos").textContent = DISCIPLINAS.reduce((s, d) => s + d.resumos.length, 0);
   $("#s-count").textContent = lista.length + (lista.length === 1 ? " disciplina" : " disciplinas") + " · " + Object.keys(TRACKS).length + " trilhas";
 }
 
@@ -1272,17 +1304,65 @@ zonas.forEach(t => t.addEventListener("click", () => selecionarZona(t.dataset.zo
 function abrir(slug){
   const d = DISCIPLINAS.find(x => x.slug === slug);
   if (!d) return;
+  disciplinaAtual = d;
   const t = TRACKS[d.track];
   $("#m-plot").textContent = t.letra;
   $("#m-plot").style.setProperty("--c", t.cor);
   $("#m-title").textContent = d.title;
   $("#m-track").textContent = t.nome + " · " + STAGES[d.stage - 1];
-  $("#m-tag").textContent = d.tag;
-  $("#m-topics").innerHTML = d.topics.map(x => `<li>${x}</li>`).join("");
-  $("#m-why").textContent = d.why;
-  $("#m-open").onclick = () => { location.href = "disciplinas/" + d.slug + "/README.md"; };
+  $("#m-tag").innerHTML = d.tag;
+  $("#m-topics").innerHTML = (d.topics || []).map(x => `<li>${x}</li>`).join("");
+  $("#m-why").innerHTML = d.why;
+
+  const wrap = $("#m-resumos-wrap");
+  const lista = $("#m-resumos");
+  if (d.resumos.length) {
+    wrap.hidden = false;
+    lista.innerHTML = d.resumos.map((r, i) => `
+      <button class="resumo-item" data-i="${i}">
+        <span class="num">${r.numero || "•"}</span>
+        <span>${r.titulo}</span>
+        <span class="min">${r.minutos} min</span>
+      </button>`).join("");
+  } else {
+    wrap.hidden = true;
+    lista.innerHTML = "";
+  }
+
+  $("#m-open").onclick = () => {
+    location.href = "https://github.com/LuizClaudioAds/studium-dev/blob/main/disciplinas/" + d.slug + "/README.md";
+  };
   modal.showModal();
 }
+
+/* ---------- leitor de resumos ---------- */
+let disciplinaAtual = null;
+const leitor = $("#leitor");
+
+function abrirResumo(d, idx){
+  const r = d.resumos[idx];
+  if (!r) return;
+  $("#l-title").textContent = r.completo;
+  $("#l-sub").textContent = d.title + " · " + r.minutos + " min de leitura";
+  $("#l-body").innerHTML = r.html.replace(/^\s*<h1>[\s\S]*?<\/h1>/, "");
+  $("#l-body").scrollTop = 0;
+  $("#l-prev").disabled = idx === 0;
+  $("#l-next").disabled = idx === d.resumos.length - 1;
+  $("#l-prev").onclick = () => abrirResumo(d, idx - 1);
+  $("#l-next").onclick = () => abrirResumo(d, idx + 1);
+  if (!leitor.open) leitor.showModal();
+}
+
+$("#m-resumos").addEventListener("click", e => {
+  const b = e.target.closest(".resumo-item");
+  if (!b || !disciplinaAtual) return;
+  abrirResumo(disciplinaAtual, Number(b.dataset.i));
+});
+$("#l-close").addEventListener("click", () => leitor.close());
+leitor.addEventListener("click", e => { if (e.target === leitor) leitor.close(); });
+$("#l-body").addEventListener("click", e => {
+  if (e.target.closest("a")) e.preventDefault();
+});
 
 chips.addEventListener("click", e => {
   const b = e.target.closest(".chip");
@@ -1313,6 +1393,12 @@ if (params.has("noite")) {
   btnTema.textContent = "☾";
 }
 if (params.has("abrir")) setTimeout(() => abrir(params.get("abrir")), 150);
+if (params.has("ler")) {
+  setTimeout(() => {
+    const d = DISCIPLINAS.find(x => x.slug === params.get("ler"));
+    if (d && d.resumos.length) { abrir(d.slug); abrirResumo(d, 0); }
+  }, 200);
+}
 if (params.has("zona")) selecionarZona(params.get("zona"));
 if (params.has("filtro")) filtro = params.get("filtro");
 
