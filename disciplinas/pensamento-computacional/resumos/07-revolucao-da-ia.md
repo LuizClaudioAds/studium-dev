@@ -1,6 +1,6 @@
 # Tema 07 — A revolução da Inteligência Artificial
 
-> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** [PDF](<../../../materiais/pensamento-computacional/Tema 7 - A Revolução da Inteligência Artificial.pdf>) · 40 páginas
+> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 40 páginas
 
 ## Em uma frase
 

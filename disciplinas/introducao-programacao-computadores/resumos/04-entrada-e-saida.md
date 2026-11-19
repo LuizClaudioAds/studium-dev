@@ -1,6 +1,6 @@
 # Tema 04 — Comandos de entrada e saída
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 4 - Comandos de Entrada e Saída.pdf>) · 24 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 24 páginas
 
 ## Em uma frase
 

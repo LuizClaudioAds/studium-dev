@@ -1,6 +1,6 @@
 # Computação em Nuvem
 
-> **Trilha:** Infraestrutura & Segurança · **Status:** com materiais · **Materiais:** 8 arquivos
+> **Trilha:** Infraestrutura & Segurança · **Status:** com resumos · **Materiais:** 8 arquivos
 
 ## Em uma frase
 
@@ -25,16 +25,16 @@ Quase todo software que eu vou construir roda em nuvem. Saber escolher entre uma
 
 > Ementa oficial. Cada tema tem o material original em `materiais/computacao-em-nuvem/`.
 
-| # | Tema | O que cobre | Material |
+| # | Tema | O que cobre | Resumo |
 | :-: | :--- | :--- | :--- |
-| 01 | Apresentação da disciplina | visão geral e objetivos | [txt](<../../materiais/computacao-em-nuvem/Tema 1 - Apresentação da Disciplina.txt>) |
-| 02 | Fundamentos | conceitos e modelos de nuvem | [pdf](<../../materiais/computacao-em-nuvem/Tema 2 - Fundamentos de Computação em Nuvem.pdf>) |
-| 03 | Arquitetura | elementos e camadas | [pdf](<../../materiais/computacao-em-nuvem/Tema 3 - Arquitetura de Computação em Nuvem.pdf>) |
-| 04 | Segurança em nuvem | práticas e responsabilidades | [pdf](<../../materiais/computacao-em-nuvem/Tema 4 - Segurança em Computação em Nuvem.pdf>) |
-| 05 | Microsoft Azure | serviços, governança e nuvem híbrida | [pdf](<../../materiais/computacao-em-nuvem/Tema 5 - Ambiente de Computação em Nuvem - Azure.pdf>) |
-| 06 | Amazon AWS | provisionamento e gestão de recursos | [pdf](<../../materiais/computacao-em-nuvem/Tema 6 - Ambiente de Computação em Nuvem – Aws.pdf>) |
-| 07 | Google Cloud | configuração, segurança e desempenho | [pdf](<../../materiais/computacao-em-nuvem/Tema 7 - Ambiente de Computação em Nuvem – Google Cloud.pdf>) |
-| 08 | Praticando | exercícios e laboratório | [pdf](<../../materiais/computacao-em-nuvem/Tema 8 - Praticando.pdf>) |
+| 01 | Apresentação da disciplina | visão geral e objetivos | — |
+| 02 | Fundamentos | conceitos e modelos de nuvem | [ler](resumos/02-fundamentos.md) |
+| 03 | Arquitetura | elementos e camadas | [ler](resumos/03-arquitetura-em-nuvem.md) |
+| 04 | Segurança em nuvem | práticas e responsabilidades | [ler](resumos/04-seguranca-em-nuvem.md) |
+| 05 | Microsoft Azure | serviços, governança e nuvem híbrida | [ler](resumos/05-azure.md) |
+| 06 | Amazon AWS | provisionamento e gestão de recursos | [ler](resumos/06-aws.md) |
+| 07 | Google Cloud | configuração, segurança e desempenho | [ler](resumos/07-google-cloud.md) |
+| 08 | Praticando | exercícios e laboratório | [ler](resumos/08-praticando.md) |
 
 ## Conteúdo
 

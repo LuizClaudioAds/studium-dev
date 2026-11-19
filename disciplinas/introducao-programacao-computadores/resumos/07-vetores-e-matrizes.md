@@ -1,6 +1,6 @@
 # Tema 07 — Vetores e matrizes
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 7 - Vetores e Matrizes.pdf>) · 59 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 59 páginas
 
 ## Em uma frase
 

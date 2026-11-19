@@ -1,6 +1,6 @@
 # Tema 04 — Sistemas computacionais
 
-> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** [PDF](<../../../materiais/pensamento-computacional/Tema 4 - Sistemas Computacionais.pdf>) · 32 páginas
+> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 32 páginas
 
 ## Em uma frase
 

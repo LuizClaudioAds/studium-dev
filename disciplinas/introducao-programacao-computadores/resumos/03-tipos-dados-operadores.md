@@ -1,6 +1,6 @@
 # Tema 03 — Tipos de dados, expressões, operadores e tabela verdade
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 3 - Tipos de Dados, Expressões, Operadores e Tabela Verdade.pdf>) · 28 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 28 páginas
 
 ## Em uma frase
 

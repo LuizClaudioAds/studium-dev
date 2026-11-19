@@ -1,6 +1,6 @@
 # Tema 02 — Solução de problemas e pensamento computacional
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 2 - Solução de Problemas e Pensamento Computacional.pdf>) · 17 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 17 páginas
 
 ## Em uma frase
 

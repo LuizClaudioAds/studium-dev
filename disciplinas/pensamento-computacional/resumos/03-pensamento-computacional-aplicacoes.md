@@ -1,6 +1,6 @@
 # Tema 03 — Pensamento computacional e aplicações nas áreas de conhecimento
 
-> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** [PDF](<../../../materiais/pensamento-computacional/Tema 3 - Pensamento Computacional e Aplicações Nas Áreas de Conhecimento.pdf>) · 35 páginas
+> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 35 páginas
 
 ## Em uma frase
 

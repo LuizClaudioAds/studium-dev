@@ -1,6 +1,6 @@
 # Introdução à Segurança da Informação
 
-> **Trilha:** Infraestrutura & Segurança · **Status:** com materiais · **Materiais:** 7 arquivos
+> **Trilha:** Infraestrutura & Segurança · **Status:** com resumos · **Materiais:** 7 arquivos
 
 ## Em uma frase
 
@@ -24,15 +24,15 @@ Todo sistema nasce exposto. Senhas em texto puro, endpoints sem autenticação, 
 
 > Ementa oficial. Cada tema tem o material original em `materiais/introducao-seguranca-da-informacao/`.
 
-| # | Tema | O que cobre | Material |
+| # | Tema | O que cobre | Resumo |
 | :-: | :--- | :--- | :--- |
-| 01 | Apresentação da disciplina | visão geral e objetivos | [txt](<../../materiais/introducao-seguranca-da-informacao/Tema 1 - Apresentação da Disciplina.txt>) |
-| 02 | Princípios e ciclo de vida | confidencialidade, integridade, disponibilidade | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 2 - Princípios da Segurança e o Ciclo de Vida da Informação.pdf>) |
-| 03 | Ameaças e vulnerabilidades | ataques cibernéticos e prevenção | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 3 - Ameaças e Vulnerabilidades à Segurança de Informação.pdf>) |
-| 04 | Normas de segurança | ISO/IEC 27001 e 27002 | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 4 - Normas de Segurança da Informação.pdf>) |
-| 05 | Boas práticas | senhas, backup e criptografia | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 5 - Boas Práticas em Segurança da Informação.pdf>) |
-| 06 | Gestão de risco | ISO/IEC 27005 | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 6 - Gestão de Risco.pdf>) |
-| 07 | Continuidade de negócios | PCN e cenários adversos | [pdf](<../../materiais/introducao-seguranca-da-informacao/Tema 7 - Gestão de Continuidade do Negócio.pdf>) |
+| 01 | Apresentação da disciplina | visão geral e objetivos | — |
+| 02 | Princípios e ciclo de vida | confidencialidade, integridade, disponibilidade | [ler](resumos/02-principios-e-ciclo-de-vida.md) |
+| 03 | Ameaças e vulnerabilidades | ataques cibernéticos e prevenção | [ler](resumos/03-ameacas-e-vulnerabilidades.md) |
+| 04 | Normas de segurança | ISO/IEC 27001 e 27002 | [ler](resumos/04-normas-de-seguranca.md) |
+| 05 | Boas práticas | senhas, backup e criptografia | [ler](resumos/05-boas-praticas.md) |
+| 06 | Gestão de risco | ISO/IEC 27005 | [ler](resumos/06-gestao-de-risco.md) |
+| 07 | Continuidade de negócios | PCN e cenários adversos | [ler](resumos/07-continuidade-de-negocios.md) |
 
 ## Conteúdo
 

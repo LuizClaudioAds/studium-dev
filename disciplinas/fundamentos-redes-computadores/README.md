@@ -1,6 +1,6 @@
 # Fundamentos de Redes de Computadores
 
-> **Trilha:** Infraestrutura & Segurança · **Status:** com materiais · **Materiais:** 8 arquivos
+> **Trilha:** Infraestrutura & Segurança · **Status:** com resumos · **Materiais:** 8 arquivos
 
 ## Em uma frase
 
@@ -24,16 +24,16 @@ Quando uma aplicação "não funciona", a causa raramente está no código. Pode
 
 > Ementa oficial. Cada tema tem o material original em `materiais/fundamentos-redes-computadores/`.
 
-| # | Tema | O que cobre | Material |
+| # | Tema | O que cobre | Resumo |
 | :-: | :--- | :--- | :--- |
-| 01 | Apresentação da disciplina | visão geral e objetivos | [txt](<../../materiais/fundamentos-redes-computadores/Tema 1 - Apresentação da Disciplina.txt>) |
-| 02 | Redes e a internet | conceitos fundamentais e organização | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 2 - Redes de Computadores e a Internet.pdf>) |
-| 03 | OSI e TCP/IP | camadas e funcionalidades | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 3 - Modelo de Referência Osi e Arquitetura Tcpip.pdf>) |
-| 04 | Aplicação e transporte | serviços, arquiteturas e confiabilidade | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 4 - Camadas de Aplicação e Transporte.pdf>) |
-| 05 | Camada de rede | roteamento e endereçamento | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 5 - Camada de Rede.pdf>) |
-| 06 | Enlace e física | infraestrutura e conectividade | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 6 - Camadas de Enlace e Física.pdf>) |
-| 07 | Administração e segurança | riscos e protocolos de proteção | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 7 - Fundamentos de Administração e Segurança em Rede de Computadores.pdf>) |
-| 08 | Praticando | exercícios e laboratório | [pdf](<../../materiais/fundamentos-redes-computadores/Tema 8 - Praticando.pdf>) |
+| 01 | Apresentação da disciplina | visão geral e objetivos | — |
+| 02 | Redes e a internet | conceitos fundamentais e organização | [ler](resumos/02-redes-e-internet.md) |
+| 03 | OSI e TCP/IP | camadas e funcionalidades | [ler](resumos/03-osi-e-tcp-ip.md) |
+| 04 | Aplicação e transporte | serviços, arquiteturas e confiabilidade | [ler](resumos/04-aplicacao-e-transporte.md) |
+| 05 | Camada de rede | roteamento e endereçamento | [ler](resumos/05-camada-de-rede.md) |
+| 06 | Enlace e física | infraestrutura e conectividade | [ler](resumos/06-enlace-e-fisica.md) |
+| 07 | Administração e segurança | riscos e protocolos de proteção | [ler](resumos/07-administracao-e-seguranca.md) |
+| 08 | Praticando | exercícios e laboratório | [ler](resumos/08-praticando.md) |
 
 ## Conteúdo
 

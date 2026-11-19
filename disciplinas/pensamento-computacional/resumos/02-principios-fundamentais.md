@@ -1,6 +1,6 @@
 # Tema 02 — Introdução aos princípios fundamentais da computação
 
-> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** [PDF](<../../../materiais/pensamento-computacional/Tema 2 - Introdução Aos Princípios Fundamentais da Computação.pdf>) · 27 páginas
+> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 27 páginas
 
 ## Em uma frase
 

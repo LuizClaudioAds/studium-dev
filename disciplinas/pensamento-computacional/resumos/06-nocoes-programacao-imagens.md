@@ -1,6 +1,6 @@
 # Tema 06 — Noções de programação: manipulando imagens
 
-> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** [PDF](<../../../materiais/pensamento-computacional/Tema 6 - Noções de Programação Exemplos Com Manipulação de Imagens Digitais.pdf>) · 52 páginas
+> **Disciplina:** [Pensamento Computacional](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 52 páginas
 
 ## Em uma frase
 

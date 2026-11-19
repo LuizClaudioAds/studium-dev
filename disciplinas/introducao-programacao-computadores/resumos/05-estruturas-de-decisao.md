@@ -1,6 +1,6 @@
 # Tema 05 — Estruturas de decisão
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 5 - Estruturas de Decisão.pdf>) · 22 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 22 páginas
 
 ## Em uma frase
 

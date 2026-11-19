@@ -1,6 +1,6 @@
 # Tema 06 — Estruturas de repetição
 
-> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** [PDF](<../../../materiais/introducao-programacao-computadores/Tema 6 - Estruturas de Repetição.pdf>) · 46 páginas
+> **Disciplina:** [Introdução à Programação](../README.md) · **Fonte:** slides da disciplina (arquivados em `materiais/`) · 46 páginas
 
 ## Em uma frase
 

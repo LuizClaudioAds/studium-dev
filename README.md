@@ -134,9 +134,9 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 | :-: | :--- | :--- | :--- |
 | 01 | Pensamento Computacional | Fundamentos | 🔵 com resumos |
 | 02 | Introdução à Programação de Computadores | Fundamentos | 🔵 com resumos |
-| 03 | Fundamentos de Redes de Computadores | Infraestrutura | 🟢 com materiais |
-| 04 | Introdução à Segurança da Informação | Infraestrutura | 🟢 com materiais |
-| 05 | Computação em Nuvem | Infraestrutura | 🟢 com materiais |
+| 03 | Fundamentos de Redes de Computadores | Infraestrutura | 🔵 com resumos |
+| 04 | Introdução à Segurança da Informação | Infraestrutura | 🔵 com resumos |
+| 05 | Computação em Nuvem | Infraestrutura | 🔵 com resumos |
 | 06 | Desenvolvimento Web em HTML5, CSS, JavaScript e PHP | Dados & Web | 🟡 estruturando |
 | 07 | Estrutura de Dados | Fundamentos | 🟡 estruturando |
 | 08 | Arquitetura de Computadores | Fundamentos | 🟡 estruturando |
