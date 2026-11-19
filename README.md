@@ -132,8 +132,8 @@ Cada pasta de disciplina segue o mesmo contrato: um `README.md` com o resumo, o 
 
 | # | Disciplina | Trilha | Situação |
 | :-: | :--- | :--- | :--- |
-| 01 | Pensamento Computacional | Fundamentos | 🟢 com materiais |
-| 02 | Introdução à Programação de Computadores | Fundamentos | 🟢 com materiais |
+| 01 | Pensamento Computacional | Fundamentos | 🔵 com resumos |
+| 02 | Introdução à Programação de Computadores | Fundamentos | 🔵 com resumos |
 | 03 | Fundamentos de Redes de Computadores | Infraestrutura | 🟢 com materiais |
 | 04 | Introdução à Segurança da Informação | Infraestrutura | 🟢 com materiais |
 | 05 | Computação em Nuvem | Infraestrutura | 🟢 com materiais |

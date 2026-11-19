@@ -1,6 +1,6 @@
 # Pensamento Computacional
 
-> **Trilha:** Fundamentos da Computação · **Status:** com materiais · **Materiais:** 7 arquivos
+> **Trilha:** Fundamentos da Computação · **Status:** com resumos · **Materiais:** 7 arquivos
 
 ## Em uma frase
 
@@ -37,9 +37,23 @@ Ninguém programa um sistema inteiro de uma vez. O trabalho real começa justame
 
 ## Conteúdo
 
+### Resumos
+
+| # | Tema | |
+| :-: | :--- | :--- |
+| 02 | Princípios fundamentais da computação | [ler](resumos/02-principios-fundamentais.md) |
+| 03 | Pensamento computacional e aplicações | [ler](resumos/03-pensamento-computacional-aplicacoes.md) |
+| 04 | Sistemas computacionais | [ler](resumos/04-sistemas-computacionais.md) |
+| 05 | Representação de imagens | [ler](resumos/05-representacao-de-imagens.md) ★ |
+| 06 | Noções de programação com imagens | [ler](resumos/06-nocoes-programacao-imagens.md) |
+| 07 | A revolução da IA | [ler](resumos/07-revolucao-da-ia.md) |
+
+<sub>★ resumo complementar: o material original desta aula não estava disponível.</sub>
+
+### Exercícios e projetos
+
 | Tipo | O que tem aqui |
 | :--- | :--- |
-| 📝 Resumos | _em construção_ |
 | 🧪 Exercícios | _em construção_ |
 | 🚀 Projetos | _em construção_ |
 

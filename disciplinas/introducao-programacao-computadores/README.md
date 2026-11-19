@@ -1,6 +1,6 @@
 # Introdução à Programação de Computadores
 
-> **Trilha:** Fundamentos da Computação · **Status:** com materiais · **Materiais:** 7 arquivos
+> **Trilha:** Fundamentos da Computação · **Status:** com resumos · **Materiais:** 7 arquivos
 
 ## Em uma frase
 
@@ -37,9 +37,21 @@ Toda linguagem que eu aprender depois é, no fundo, uma variação disso. Entend
 
 ## Conteúdo
 
+### Resumos
+
+| # | Tema | |
+| :-: | :--- | :--- |
+| 02 | Solução de problemas e pensamento computacional | [ler](resumos/02-solucao-de-problemas.md) |
+| 03 | Tipos de dados, operadores e tabela verdade | [ler](resumos/03-tipos-dados-operadores.md) |
+| 04 | Comandos de entrada e saída | [ler](resumos/04-entrada-e-saida.md) |
+| 05 | Estruturas de decisão | [ler](resumos/05-estruturas-de-decisao.md) |
+| 06 | Estruturas de repetição | [ler](resumos/06-estruturas-de-repeticao.md) |
+| 07 | Vetores e matrizes | [ler](resumos/07-vetores-e-matrizes.md) |
+
+### Exercícios e projetos
+
 | Tipo | O que tem aqui |
 | :--- | :--- |
-| 📝 Resumos | _em construção_ |
 | 🧪 Exercícios | _em construção_ |
 | 🚀 Projetos | _em construção_ |
 
