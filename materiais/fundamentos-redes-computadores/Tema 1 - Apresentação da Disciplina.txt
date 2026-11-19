@@ -1,0 +1,19 @@
+Apresentação da disciplina
+Como os dados viajam pela internet e garantem que tudo funcione, desde mensagens até grandes sistemas? Descubra no vídeo a seguir como os fundamentos das redes de computadores conectam o mundo digital.
+
+
+
+O que você irá estudar nesta disciplina 
+
+
+Redes de computadores e a internet: reconhecer conceitos fundamentais das redes e da internet para compreender sua organização, promovendo o uso eficaz dessas tecnologias em aplicações atuais e futuras.
+ 
+Modelo de referência OSI e arquitetura TCP/IP: identificar camadas e funcionalidades do modelo OSI e TCP/IP, otimizando a troca de dados e assegurando a eficiência da comunicação em redes complexas.
+ 
+Camadas de Aplicação e Transporte: compreender serviços e arquiteturas de aplicações, garantindo comunicação confiável e desenvolvimento de sistemas robustos e inovadores.
+ 
+Camada de rede: aplicar princípios de roteamento e endereçamento, assegurando a comunicação eficaz entre dispositivos em redes modernas e dinâmicas.
+ 
+Camada de enlace e física: estudar infraestrutura física das redes para projetar, modernizar e solucionar problemas, garantindo conectividade confiável e eficiente.
+ 
+Fundamentos de administração e segurança em rede de computadores: identificar riscos e implementar protocolos de segurança para proteger informações e gerenciar redes com eficiência.

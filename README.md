@@ -88,6 +88,7 @@ flowchart LR
 ```text
 studium-dev/
 ├── README.md                  ← você está aqui
+├── ROADMAP.md                 ← próximos passos e ideias de gamificação
 ├── preview/
 │   └── index.html             ← protótipo visual (abra no navegador)
 ├── materiais/                 ← caixa de entrada dos PDFs e anotações brutas
@@ -173,6 +174,9 @@ Quando houver conteúdo, a camada visual passa a ler os próprios Markdowns — 
 leitura e mapa de conexões alimentados pela fonte da verdade, sem duplicar texto.
 
 O conteúdo continua sendo Markdown puro, legível direto aqui no GitHub. O site é só uma camada por cima.
+
+O plano de evolução está em [ROADMAP.md](ROADMAP.md) — incluindo a ideia de transformar
+consulta em progresso com XP, simulados, conquistas e a fazenda evoluindo junto.
 
 ---
 

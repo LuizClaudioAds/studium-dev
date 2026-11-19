@@ -1,0 +1,19 @@
+Apresentação da disciplina
+Veja o vídeo a seguir e descubra como a programação em C pode transformar a maneira como você resolve problemas, desde cálculos simples até sistemas complexos. Prepare-se para pensar como um programador!
+
+
+
+O que você irá estudar nesta disciplina
+
+
+Soluções de problemas e pensamento computacional: explorar os conceitos de solução estruturada e raciocínio lógico para modelar problemas e obter soluções computacionais. Compreender como instruir máquinas de forma precisa. Utilizar ferramentas como Portugol Studio, aplicando pseudocódigo na resolução de problemas.
+ 
+Tipos de dados, expressões, operadores e tabela verdade: compreender os tipos de dados, expressões, operadores e tabela verdade na linguagem C. Essas estruturas são fundamentais para manipular informações e criar aplicações eficientes.
+ 
+Comandos de entrada e saída: aplicar comandos de entrada e saída na linguagem C para criar programas interativos. Esses comandos são importantes para a comunicação entre usuário e sistema.
+ 
+Estruturas de decisão: aplicar estruturas de decisão simples, composta, encadeada e de múltiplas alternativas na linguagem C. Essas estruturas são fundamentais para controlar o fluxo de programas.
+ 
+Estruturas de repetição: aplicar estruturas de repetição (FOR, WHILE, DO-WHILE) em Portugol e linguagem C. Essas estruturas são essenciais para repetir blocos de instruções e processar dados de forma eficiente.
+ 
+Vetores e matrizes: aplicar vetores e matrizes para armazenar e manipular dados de forma eficiente em programas. Essas estruturas são importantes para organizar informações homogêneas.

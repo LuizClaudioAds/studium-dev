@@ -1,0 +1,19 @@
+Apresentação da disciplina
+Como proteger informações valiosas e evitar ataques digitais que afetam empresas e pessoas? No vídeo a seguir, entenda os fundamentos da segurança da informação e sua importância para o mercado de tecnologia.
+
+
+
+O que você irá estudar nesta disciplina 
+
+
+Princípios da segurança e o ciclo de vida da informação: compreender os conceitos de segurança da informação e seu ciclo de vida para aplicar medidas físicas e lógicas que garantam a integridade e confidencialidade organizacional.
+ 
+Ameaças e vulnerabilidades à segurança da informação: identificar ameaças e vulnerabilidades para prevenir danos causados por ataques cibernéticos, protegendo dados e sistemas organizacionais.
+ 
+Normas de Segurança da informação: reconhecer normas ISO/IEC 27001 e 27002 para implementar sistemas de gestão da segurança da informação com padrões globais.
+ 
+Boas práticas em segurança da informação: adotar boas práticas no gerenciamento de senhas, backups e criptografia, promovendo a proteção de dados sensíveis em ambientes organizacionais.
+ 
+Gestão de risco: definir vulnerabilidades e ameaças, aplicando etapas de gestão de risco com base na norma ISO/IEC 27005 para mitigar riscos de segurança.
+ 
+Gestão de Continuidade de Negócios: compreender o que é um Plano de Continuidade de Negócios (PCN), analisando suas etapas e aplicações para garantir a continuidade das operações organizacionais, fortalecendo a segurança interna e a confiança dos clientes em cenários adversos.
